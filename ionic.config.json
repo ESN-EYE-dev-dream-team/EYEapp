@@ -1,0 +1,7 @@
+{
+  "name": "ESN-EYE app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
