@@ -36,15 +36,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
     }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   },
   "browserslist": {
     "production": [
