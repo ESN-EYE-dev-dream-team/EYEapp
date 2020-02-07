@@ -40,7 +40,7 @@ Todo
 
 ## Contributing
 
-* master, development branches are secured. You can push there only by PRs
+* master, development branches are protected. You can push there only by PRs
 `
 1. Make a branch with your feature 
 2. After work is done, push it and make PR
