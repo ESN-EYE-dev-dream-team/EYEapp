@@ -7,9 +7,11 @@ const accessToken =
 
 const eventFields = 'cover%2Cstart_time%2Cend_time%2Cname%2Cdescription%2Cplace';
 
-export const getAllEvents = async () => {
+const tokenWrapper = (content: string): string => `${content}access_token=${accessToken}`;
+
+export const getAllEvents = async (): Promise<any> => {
     try {
-        const request = `${pageId}/events?fields=${eventFields}&access_token=${accessToken}`;
+        const request = tokenWrapper(`${pageId}/events?fields=${eventFields}&`);
         const response = await apiClient.get<Record<string, any>>(request);
         return response.data;
     } catch (err) {
@@ -17,6 +19,19 @@ export const getAllEvents = async () => {
             return err;
         }
 
+        throw err;
+    }
+};
+
+export const getEventsDetails = async (eventId: string): Promise<any> => {
+    try {
+        const request = tokenWrapper(`${eventId}?`);
+        const response = await apiClient.get<Record<string, any>>(request);
+        return response.data;
+    } catch (err) {
+        if (err && err.response) {
+            return err;
+        }
         throw err;
     }
 };
