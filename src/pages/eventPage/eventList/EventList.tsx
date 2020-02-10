@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getAllEvents } from '../EventPageAPI';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonList } from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonList } from '@ionic/react';
 import { get } from 'lodash';
 
 type EventListState = {
@@ -8,7 +8,7 @@ type EventListState = {
 };
 
 const createEventElement = (eventData: any): JSX.Element => (
-    <IonItem>
+    <IonItem routerLink={`/eventDetail/${eventData.id}`}>
         <IonCard className="welcome-card">
             <img src={eventData.cover.source} alt="" />
             <IonCardHeader>
