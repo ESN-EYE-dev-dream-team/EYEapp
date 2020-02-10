@@ -39,9 +39,6 @@ class EventList extends Component<{}, EventListState> {
                 {this.state.eventList.reduce((listContent: Array<JSX.Element>, eventObject) => {
                     const eventElement = createEventElement(eventObject);
                     listContent.push(eventElement);
-
-                    console.log('eventElement', eventElement);
-                    console.log('listContent', listContent);
                     return listContent;
                 }, [])}
             </IonList>
