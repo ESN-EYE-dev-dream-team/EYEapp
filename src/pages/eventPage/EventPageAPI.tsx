@@ -25,7 +25,7 @@ export const getAllEvents = async (): Promise<any> => {
 
 export const getEventsDetails = async (eventId: string): Promise<any> => {
     try {
-        const request = tokenWrapper(`${eventId}?`);
+        const request = tokenWrapper(`${eventId}?fields=${eventFields}&`);
         const response = await apiClient.get<Record<string, any>>(request);
         return response.data;
     } catch (err) {
