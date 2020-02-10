@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import EventList from './eventList/EventList';
+import EventList from './eventPage/eventList/EventList';
 
 import './Tab1.css';
 

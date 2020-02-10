@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { createGETrequest } from '../../apiClient';
+import { getAllEvents } from '../EventPageAPI';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonList } from '@ionic/react';
+import { get } from 'lodash';
 
 type EventListState = {
     eventList: Array<Record<string, any>>;
@@ -12,9 +13,9 @@ const createEventElement = (eventData: any): JSX.Element => (
             <img src={eventData.cover.source} alt="" />
             <IonCardHeader>
                 <IonCardTitle>{eventData.name}</IonCardTitle>
-                <IonCardSubtitle>{eventData.place.name}</IonCardSubtitle>
+                <IonCardSubtitle>Place: {get(eventData, 'place.name', '-')}</IonCardSubtitle>
             </IonCardHeader>
-            <IonCardContent>{eventData.description}</IonCardContent>
+            event id: {eventData.id}
         </IonCard>
     </IonItem>
 );
@@ -26,7 +27,7 @@ class EventList extends Component<{}, EventListState> {
     };
 
     componentDidMount(): void {
-        createGETrequest('events').then(({ data }) => {
+        getAllEvents().then(({ data }) => {
             this.setState({
                 eventList: data,
             });
