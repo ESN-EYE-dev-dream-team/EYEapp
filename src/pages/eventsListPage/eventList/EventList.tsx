@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { getAllEvents } from '../EventPageAPI';
 import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonList } from '@ionic/react';
 import { get } from 'lodash';
+import moment from 'moment';
 
 type EventListState = {
     eventList: Array<Record<string, any>>;
+};
+
+const createParsedDate = (dateString: any): string => {
+    if (!dateString) return '';
+    const parsedDate = moment(dateString);
+    return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
 };
 
 const createEventElement = (eventData: any): JSX.Element => (
@@ -13,9 +20,10 @@ const createEventElement = (eventData: any): JSX.Element => (
             <img src={eventData.cover.source} alt="" />
             <IonCardHeader>
                 <IonCardTitle>{eventData.name}</IonCardTitle>
-                <IonCardSubtitle>Place: {get(eventData, 'place.name', '-')}</IonCardSubtitle>
+                <IonCardSubtitle>
+                    Place: {get(eventData, 'place.name', '-')} @ {createParsedDate(eventData.start_time)}
+                </IonCardSubtitle>
             </IonCardHeader>
-            event id: {eventData.id}
         </IonCard>
     </IonItem>
 );

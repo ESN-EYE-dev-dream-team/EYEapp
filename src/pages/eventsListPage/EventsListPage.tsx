@@ -1,10 +1,10 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import EventList from './eventPage/eventList/EventList';
+import EventList from './eventList/EventList';
 
-import './Tab1.css';
+import './EventsListPage.css';
 
-const Tab1: React.FC = () => {
+const EventsListPage: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
@@ -19,4 +19,4 @@ const Tab1: React.FC = () => {
     );
 };
 
-export default Tab1;
+export default EventsListPage;

@@ -14,6 +14,13 @@ import {
     IonCardContent,
 } from '@ionic/react';
 import { getEventsDetails } from '../EventPageAPI';
+import moment from 'moment';
+
+const createParsedDate = (dateString: any): string => {
+    if (!dateString) return '';
+    const parsedDate = moment(dateString);
+    return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
+};
 
 const EventDetailPage: React.FC = ({ match }: any) => {
     const [eventData, setEventData] = useState({
@@ -44,7 +51,7 @@ const EventDetailPage: React.FC = ({ match }: any) => {
         getEventsDetails(match.params.id).then(newEventData => {
             setEventData(newEventData);
         });
-    }, []);
+    }, [match.params.id]);
 
     return (
         <IonPage>
@@ -61,8 +68,8 @@ const EventDetailPage: React.FC = ({ match }: any) => {
                     <IonCardHeader>
                         <img src={cover.source} alt="" />
                         <IonCardTitle> {name} </IonCardTitle>
-                        <IonCardSubtitle>Start: {start_time}</IonCardSubtitle>
-                        <IonCardSubtitle>End: {end_time}</IonCardSubtitle>
+                        <IonCardSubtitle>Start: {createParsedDate(start_time)}</IonCardSubtitle>
+                        <IonCardSubtitle>End: {createParsedDate(end_time)}</IonCardSubtitle>
                         <IonCardSubtitle>Place: {place.name}</IonCardSubtitle>
                     </IonCardHeader>
 
