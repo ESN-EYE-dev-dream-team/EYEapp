@@ -40,9 +40,11 @@ Todo
 
 ## Contributing
 
-* master, development branches are protected. You can push there only by PRs
+* master, development branches are protected. You can push there only by PRs (at least one approval is needed to merge)
 `
 1. Make a branch with your feature 
 2. After work is done, push it and make PR
 3. Wait till one of your colleagues will give you thumb up and than you can marge :)
+4. Select option REBASE AND MERGE to prevent non-linear history of code
+
 `
