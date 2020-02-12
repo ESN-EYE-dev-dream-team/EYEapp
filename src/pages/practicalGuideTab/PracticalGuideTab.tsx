@@ -1,12 +1,5 @@
-
-
 import React from 'react';
-
-
-
 import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-
-
 
 const fullScreen = {
       width: "100%",
