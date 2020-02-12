@@ -2,12 +2,12 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, list, send } from 'ionicons/icons';
+import { list, alarm, people, document } from 'ionicons/icons';
 import EventsListPage from './pages/eventsListPage/EventsListPage';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
-import Details from './pages/Details';
+import OfficeHoursTab from './pages/officeHoursTab/OfficeHoursTab';
+import ESNMembersTab from './pages/ESNMembersTab/ESNMembersTab';
 import EventDetailPage from './pages/eventsListPage/eventDetailPage/EventDetailPage';
+import PracticalGuideTab from './pages/practicalGuideTab/PracticalGuideTab';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,25 +33,30 @@ const App: React.FC = () => (
         <IonReactRouter>
             <IonTabs>
                 <IonRouterOutlet>
-                    <Route path="/eventDetail/:id" component={EventDetailPage} exact={true} />
-                    <Route path="/eventsList" component={EventsListPage} exact={true} />
-                    <Route path="/tab2" component={Tab2} exact={true} />
-                    <Route path="/tab2/details" component={Details} />
-                    <Route path="/tab3" component={Tab3} />
+                    <Route path="/eventdetail/:id" component={EventDetailPage} exact={true} />
+                    <Route path="/eventslist" component={EventsListPage} exact={true} />
+                    <Route path="/officehours" component={OfficeHoursTab} exact={true} />
+                    <Route path="/esnmembers" component={ESNMembersTab} exact={true} />
+                    <Route path="/practicalGuide" component={PracticalGuideTab} exact={true} />
+
                     <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
-                    <IonTabButton tab="eventsList" href="/eventsList">
+                    <IonTabButton tab="eventsist" href="/eventsList">
                         <IonIcon icon={list} />
                         <IonLabel>Event list</IonLabel>
                     </IonTabButton>
-                    <IonTabButton tab="tab2" href="/tab2">
-                        <IonIcon icon={apps} />
-                        <IonLabel>Tab Two</IonLabel>
+                    <IonTabButton tab="officehours" href="/officehours">
+                        <IonIcon icon={alarm} />
+                        <IonLabel>Office Hours</IonLabel>
                     </IonTabButton>
-                    <IonTabButton tab="tab3" href="/tab3">
-                        <IonIcon icon={send} />
-                        <IonLabel>Tab Three</IonLabel>
+                    <IonTabButton tab="esnmembers" href="/esnmembers">
+                        <IonIcon icon={people} />
+                        <IonLabel>ESN members</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="practicalGuide" href="/practicalGuide">
+                        <IonIcon icon={document} />
+                        <IonLabel>Practical Guide</IonLabel>
                     </IonTabButton>
                 </IonTabBar>
             </IonTabs>
