@@ -38,7 +38,7 @@ const App: React.FC = () => (
                     <Route path="/officehours" component={OfficeHoursTab} exact={true} />
                     <Route path="/esnmembers" component={ESNMembersTab} exact={true} />
                     <Route path="/practicalGuide" component={PracticalGuideTab} exact={true} />
-                    <Route path="/" render={() => <Redirect to="/eventslist" />} exact={true} />
+                    <Route path="/" render={(): JSX.Element => <Redirect to="/eventslist" />} exact={true} />
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="eventsist" href="/eventsList">
