@@ -6,7 +6,7 @@ const OfficeHoursTab: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Tab Two</IonTitle>
+                    <IonTitle>Office Hours</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
