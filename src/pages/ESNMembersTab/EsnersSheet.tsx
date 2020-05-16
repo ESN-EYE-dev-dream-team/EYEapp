@@ -25,25 +25,20 @@ function EsnersSheet() {
     const [esners, setEsners] = useState<ESNer[]>([]);
 
     useEffect(() => {
-        apiGoogleSheetsClient
-            .getESNersData()
-            .then(respose => {
-                //TODO: make 'a little more' smart error handling
-                if (respose.status !== 200) return;
+        apiGoogleSheetsClient.getESNersData().then(respose => {
+            //TODO: make 'a little more' smart error handling
+            if (respose && respose.status !== 200) return;
 
-                const {
-                    data: { values },
-                } = respose;
+            const {
+                data: { values },
+            } = respose;
 
-                const newEsners = values.reduce((newEsners: ESNer[], rawEntry: string[]) => {
-                    newEsners.push(createEsner(rawEntry));
-                    return newEsners;
-                }, []);
-                setEsners(newEsners);
-            })
-            .catch(e => {
-                console.error(e);
-            });
+            const newEsners = values.reduce((newEsners: ESNer[], rawEntry: string[]) => {
+                newEsners.push(createEsner(rawEntry));
+                return newEsners;
+            }, []);
+            setEsners(newEsners);
+        });
     }, []);
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;

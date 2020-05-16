@@ -21,25 +21,20 @@ function OfficeHoursSheet() {
     const [officeHours, setOfficeHours] = useState<any>([]);
 
     useEffect(() => {
-        apiGoogleSheetsClient
-            .getOfficeHoursData()
-            .then(respose => {
-                //TODO: make 'a little more' smart error handling
-                if (respose.status !== 200) return;
+        apiGoogleSheetsClient.getOfficeHoursData().then(respose => {
+            //TODO: make 'a little more' smart error handling
+            if (respose && respose.status !== 200) return;
 
-                const {
-                    data: { values },
-                } = respose;
+            const {
+                data: { values },
+            } = respose;
 
-                const newOfficeHours = values.reduce((newOfficeHours: OfficeHoursEntry[], rawEntry: string[]) => {
-                    newOfficeHours.push(createOHEntry(rawEntry));
-                    return newOfficeHours;
-                }, []);
-                setOfficeHours(newOfficeHours);
-            })
-            .catch(e => {
-                console.error(e);
-            });
+            const newOfficeHours = values.reduce((newOfficeHours: OfficeHoursEntry[], rawEntry: string[]) => {
+                newOfficeHours.push(createOHEntry(rawEntry));
+                return newOfficeHours;
+            }, []);
+            setOfficeHours(newOfficeHours);
+        });
     }, []);
 
     if (officeHours === []) return <div> NO OH DATA FOUND </div>;
