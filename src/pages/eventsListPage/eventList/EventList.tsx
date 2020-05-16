@@ -45,11 +45,11 @@ class EventList extends Component<{}, EventListState> {
     render(): JSX.Element {
         return (
             <IonList>
-                {this.state.eventList.reduce((listContent: Array<JSX.Element>, eventObject) => {
+                {/* {this.state.eventList.reduce((listContent: Array<JSX.Element>, eventObject) => {
                     const eventElement = createEventElement(eventObject);
                     listContent.push(eventElement);
                     return listContent;
-                }, [])}
+                }, [])} */}
             </IonList>
         );
     }
