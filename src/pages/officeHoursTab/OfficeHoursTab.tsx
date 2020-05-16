@@ -1,16 +1,17 @@
 import React from 'react';
-import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import OfficeHoursSheet from './OfficeHoursSheet';
 
 const OfficeHoursTab: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Tab Two</IonTitle>
+                    <IonTitle>Office Hours</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonList>Office Hours</IonList>
+                <OfficeHoursSheet />
             </IonContent>
         </IonPage>
     );
