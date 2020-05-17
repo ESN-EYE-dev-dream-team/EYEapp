@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
+import { IonItem, IonList } from '@ionic/react';
 
 interface ESNer {
     id: number;
@@ -43,15 +44,16 @@ function EsnersSheet() {
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
-        <div>
+        <IonList>
             {esners.map((data: ESNer) => (
-                <span key={data.id}>
+                <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
+                    <img className="member-thumbnail" width="60" height="60" src={data.picture} />
                     <p>
-                        {data.name} {data.surname} <strong>{data.position}</strong>
+                        <strong>{data.name} {data.surname}</strong> <br /> {data.position}
                     </p>
-                </span>
+                </IonItem>
             ))}
-        </div>
+        </IonList>
     );
 }
 
