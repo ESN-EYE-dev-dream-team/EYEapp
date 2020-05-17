@@ -1,16 +1,17 @@
 import React from 'react';
-import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 
 const PracticalGuideTab: React.FC = () => {
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Practical Guide</IonTitle>
-                </IonToolbar>
-            </IonHeader>
             <IonContent>
-                <IonList>PracticalGuideTab</IonList>
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size="12">
+                            <h1 className="ion-text-center">Practical Guide</h1>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
             </IonContent>
         </IonPage>
     );
