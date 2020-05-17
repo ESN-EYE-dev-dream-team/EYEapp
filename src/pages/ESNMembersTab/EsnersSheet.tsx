@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
-import { IonItem, IonList } from '@ionic/react';
+import { IonItem, IonItemGroup, IonLabel, IonList } from '@ionic/react';
+
+const MEMBER_BOARD = 'B';
+const MEMBER_COORDINATOR = 'C';
+const MEMBER_ORDINARY = 'Z';
 
 interface ESNer {
     id: number;
     name: string;
     surname: string;
-    isBoard: boolean;
+    memberType: string;
     position: string;
     picture: string;
 }
@@ -16,11 +20,25 @@ const createEsner = (rawEntry: string[]) => {
         id: parseInt(rawEntry[0]),
         name: rawEntry[1],
         surname: rawEntry[2],
-        isBoard: Boolean(rawEntry[3]),
+        memberType: rawEntry[3],
         position: rawEntry[4],
         picture: rawEntry[5],
     };
 };
+
+function showMembers(data: ESNer) {
+    return (
+        <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
+            <img alt="ESN Member photo" className="member-thumbnail" width="60" height="60" src={data.picture} />
+            <p>
+                <strong>
+                    {data.name} {data.surname}{' '}
+                </strong>{' '}
+                <br /> {data.position}
+            </p>
+        </IonItem>
+    );
+}
 
 function EsnersSheet() {
     const [esners, setEsners] = useState<ESNer[]>([]);
@@ -45,14 +63,18 @@ function EsnersSheet() {
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
         <IonList>
-            {esners.map((data: ESNer) => (
-                <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
-                    <img className="member-thumbnail" width="60" height="60" src={data.picture} />
-                    <p>
-                        <strong>{data.name} {data.surname}</strong> <br /> {data.position}
-                    </p>
-                </IonItem>
-            ))}
+            <IonItemGroup>
+                <IonLabel>Board</IonLabel>
+                {esners.filter(member => member.memberType === MEMBER_BOARD).map((data: ESNer) => showMembers(data))}
+            </IonItemGroup>
+            <IonItemGroup>
+                <IonLabel>Coordinators</IonLabel>
+                {esners.filter(member => member.memberType === MEMBER_COORDINATOR).map((data: ESNer) => showMembers(data))}
+            </IonItemGroup>
+            <IonItemGroup>
+                <IonLabel>Ordinary Members</IonLabel>
+                {esners.filter(member => member.memberType === MEMBER_ORDINARY).map((data: ESNer) => showMembers(data))}
+            </IonItemGroup>
         </IonList>
     );
 }
