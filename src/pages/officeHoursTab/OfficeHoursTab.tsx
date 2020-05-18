@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonPage, IonGrid, IonRow, IonCol} from '@ionic/react';
+import { IonContent, IonPage, IonGrid, IonRow, IonCol } from '@ionic/react';
 import OfficeHoursSheet from './OfficeHoursSheet';
 import '../../theme/styles.css';
 

@@ -62,15 +62,15 @@ function EsnersSheet() {
 
     const boardMembers = esners
         .filter(member => member.memberType === MEMBER_BOARD)
-        .map((data: ESNer) => <Member data={data} />);
+        .map((data: ESNer) => <Member key={data.id} data={data} />);
 
     const coordinators = esners
         .filter(member => member.memberType === MEMBER_COORDINATOR)
-        .map((data: ESNer) => <Member data={data} />);
+        .map((data: ESNer) => <Member key={data.id} data={data} />);
 
     const ordinaryMembers = esners
         .filter(member => member.memberType === MEMBER_ORDINARY)
-        .map((data: ESNer) => <Member data={data} />);
+        .map((data: ESNer) => <Member key={data.id} data={data} />);
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
