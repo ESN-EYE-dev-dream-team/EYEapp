@@ -29,11 +29,9 @@ const createEsner = (rawEntry: string[]) => {
 function showMembers(data: ESNer) {
     return (
         <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
-            <img alt="ESN Member photo" className="member-thumbnail" width="60" height="60" src={data.picture} />
+            <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
             <p>
-                <strong>
-                    {data.name} {data.surname}{' '}
-                </strong>{' '}
+                <strong>{data.name} {data.surname}</strong>
                 <br /> {data.position}
             </p>
         </IonItem>
@@ -60,20 +58,24 @@ function EsnersSheet() {
         });
     }, []);
 
+    const boardMembers = esners.filter(member => member.memberType === MEMBER_BOARD).map((data: ESNer) => showMembers(data));
+    const coordinators = esners.filter(member => member.memberType === MEMBER_COORDINATOR).map((data: ESNer) => showMembers(data));
+    const ordinaryMembers = esners.filter(member => member.memberType === MEMBER_ORDINARY).map((data: ESNer) => showMembers(data));
+
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
         <IonList>
             <IonItemGroup>
                 <IonLabel>Board</IonLabel>
-                {esners.filter(member => member.memberType === MEMBER_BOARD).map((data: ESNer) => showMembers(data))}
+                {boardMembers}
             </IonItemGroup>
             <IonItemGroup>
                 <IonLabel>Coordinators</IonLabel>
-                {esners.filter(member => member.memberType === MEMBER_COORDINATOR).map((data: ESNer) => showMembers(data))}
+                {coordinators}
             </IonItemGroup>
             <IonItemGroup>
                 <IonLabel>Ordinary Members</IonLabel>
-                {esners.filter(member => member.memberType === MEMBER_ORDINARY).map((data: ESNer) => showMembers(data))}
+                {ordinaryMembers}
             </IonItemGroup>
         </IonList>
     );
