@@ -26,12 +26,14 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
-function showMember(data: ESNer) {
+function Member({ data }: { data: ESNer }) {
     return (
         <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
             <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
             <p>
-                <strong>{data.name} {data.surname}</strong>
+                <strong>
+                    {data.name} {data.surname}
+                </strong>
                 <br /> {data.position}
             </p>
         </IonItem>
@@ -58,9 +60,17 @@ function EsnersSheet() {
         });
     }, []);
 
-    const boardMembers = esners.filter(member => member.memberType === MEMBER_BOARD).map((data: ESNer) => showMember(data));
-    const coordinators = esners.filter(member => member.memberType === MEMBER_COORDINATOR).map((data: ESNer) => showMember(data));
-    const ordinaryMembers = esners.filter(member => member.memberType === MEMBER_ORDINARY).map((data: ESNer) => showMember(data));
+    const boardMembers = esners
+        .filter(member => member.memberType === MEMBER_BOARD)
+        .map((data: ESNer) => <Member data={data} />);
+
+    const coordinators = esners
+        .filter(member => member.memberType === MEMBER_COORDINATOR)
+        .map((data: ESNer) => <Member data={data} />);
+
+    const ordinaryMembers = esners
+        .filter(member => member.memberType === MEMBER_ORDINARY)
+        .map((data: ESNer) => <Member data={data} />);
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
