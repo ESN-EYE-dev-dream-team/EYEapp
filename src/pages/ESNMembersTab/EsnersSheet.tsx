@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
+import { IonItem, IonItemGroup, IonLabel, IonList } from '@ionic/react';
+
+const MEMBER_BOARD = 'B';
+const MEMBER_COORDINATOR = 'C';
+const MEMBER_ORDINARY = 'Z';
 
 interface ESNer {
     id: number;
     name: string;
     surname: string;
-    isBoard: boolean;
+    memberType: string;
     position: string;
     picture: string;
 }
@@ -15,11 +20,25 @@ const createEsner = (rawEntry: string[]) => {
         id: parseInt(rawEntry[0]),
         name: rawEntry[1],
         surname: rawEntry[2],
-        isBoard: Boolean(rawEntry[3]),
+        memberType: rawEntry[3],
         position: rawEntry[4],
         picture: rawEntry[5],
     };
 };
+
+function Member({ data }: { data: ESNer }) {
+    return (
+        <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
+            <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
+            <p>
+                <strong>
+                    {data.name} {data.surname}
+                </strong>
+                <br /> {data.position}
+            </p>
+        </IonItem>
+    );
+}
 
 function EsnersSheet() {
     const [esners, setEsners] = useState<ESNer[]>([]);
@@ -41,17 +60,34 @@ function EsnersSheet() {
         });
     }, []);
 
+    const boardMembers = esners
+        .filter(member => member.memberType === MEMBER_BOARD)
+        .map((data: ESNer) => <Member key={data.id} data={data} />);
+
+    const coordinators = esners
+        .filter(member => member.memberType === MEMBER_COORDINATOR)
+        .map((data: ESNer) => <Member key={data.id} data={data} />);
+
+    const ordinaryMembers = esners
+        .filter(member => member.memberType === MEMBER_ORDINARY)
+        .map((data: ESNer) => <Member key={data.id} data={data} />);
+
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
-        <div>
-            {esners.map((data: ESNer) => (
-                <span key={data.id}>
-                    <p>
-                        {data.name} {data.surname} <strong>{data.position}</strong>
-                    </p>
-                </span>
-            ))}
-        </div>
+        <IonList>
+            <IonItemGroup>
+                <IonLabel>Board</IonLabel>
+                {boardMembers}
+            </IonItemGroup>
+            <IonItemGroup>
+                <IonLabel>Coordinators</IonLabel>
+                {coordinators}
+            </IonItemGroup>
+            <IonItemGroup>
+                <IonLabel>Ordinary Members</IonLabel>
+                {ordinaryMembers}
+            </IonItemGroup>
+        </IonList>
     );
 }
 
