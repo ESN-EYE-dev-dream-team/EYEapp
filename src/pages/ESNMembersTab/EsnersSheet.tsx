@@ -26,7 +26,7 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
-function showMembers(data: ESNer) {
+function showMember(data: ESNer) {
     return (
         <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
             <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
@@ -58,9 +58,9 @@ function EsnersSheet() {
         });
     }, []);
 
-    const boardMembers = esners.filter(member => member.memberType === MEMBER_BOARD).map((data: ESNer) => showMembers(data));
-    const coordinators = esners.filter(member => member.memberType === MEMBER_COORDINATOR).map((data: ESNer) => showMembers(data));
-    const ordinaryMembers = esners.filter(member => member.memberType === MEMBER_ORDINARY).map((data: ESNer) => showMembers(data));
+    const boardMembers = esners.filter(member => member.memberType === MEMBER_BOARD).map((data: ESNer) => showMember(data));
+    const coordinators = esners.filter(member => member.memberType === MEMBER_COORDINATOR).map((data: ESNer) => showMember(data));
+    const ordinaryMembers = esners.filter(member => member.memberType === MEMBER_ORDINARY).map((data: ESNer) => showMember(data));
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
