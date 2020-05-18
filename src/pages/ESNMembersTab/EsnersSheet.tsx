@@ -26,10 +26,11 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
+
 function Member({ data }: { data: ESNer }) {
     return (
-        <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
-            <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
+        <IonItem className="background-white-opacity ESNmember-box" color="whiteOpacity"  key={data.id} >
+            <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
             <p>
                 <strong>
                     {data.name} {data.surname}
@@ -37,8 +38,11 @@ function Member({ data }: { data: ESNer }) {
                 <br /> {data.position}
             </p>
         </IonItem>
+
     );
 }
+
+
 
 function EsnersSheet() {
     const [esners, setEsners] = useState<ESNer[]>([]);
@@ -74,17 +78,20 @@ function EsnersSheet() {
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
-        <IonList>
-            <IonItemGroup>
-                <IonLabel>Board</IonLabel>
+        <IonList  className="background-white-opacity">
+            <IonItemGroup className="div-box-members">
+
+                <IonLabel className="background-white ion-text-center box - members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/> Board</IonLabel>
                 {boardMembers}
+
             </IonItemGroup>
+
             <IonItemGroup>
-                <IonLabel>Coordinators</IonLabel>
+                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/>Coordinators</IonLabel>
                 {coordinators}
             </IonItemGroup>
             <IonItemGroup>
-                <IonLabel>Ordinary Members</IonLabel>
+                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/>Ordinary Members</IonLabel>
                 {ordinaryMembers}
             </IonItemGroup>
         </IonList>

@@ -1,4 +1,71 @@
-.member-thumbnail{
-    border-radius: 40px;
-    object-fit:cover;
+/*   ----------------------------------------------------------------------------- GENERAL*/
+h1 {
+  color: yellow;
 }
+
+.fluid-container {
+  margin: 7%;
+}
+
+.color-text-black {
+  color: #1D2D44;
+}
+
+.color-text-white {
+  color: #EAEFF5;
+}
+
+.background-white {
+  background-color: #EAEFF5;
+  position: relative;
+}
+
+.background-white-opacity {
+  background-color: rgba(234, 239, 245, 0.03);
+}
+
+.heading-main {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 10%;
+}
+
+.paragraph-white {
+  font-size: 0.8rem;
+  font-weight: 200;
+  line-height: 1;
+  margin: 5% 7% 7%;
+}
+
+/*   ----------------------------------------------------------------------------- MEMBERS */
+.ESNmember-box {
+  padding: 10px 40px;
+}
+
+.hamburger-menu {
+  color: #1D2D44;
+  position: absolute;
+  left: 40px;
+  width: 10px;
+}
+
+.ESNmember-photo {
+  border-radius: 100%;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+}
+
+.div-box-members {
+  position: relative;
+}
+
+.box-members {
+  padding: 10px;
+  font-weight: 400;
+}
+
+/*   ----------------------------------------------------------------------------- PRACTICAL GUIDE */
+/*   ----------------------------------------------------------------------------- OFFICE HOURS */
+/*   ----------------------------------------------------------------------------- EVENTS */
