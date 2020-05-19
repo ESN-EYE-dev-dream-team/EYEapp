@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
-import { IonItem, IonItemGroup, IonLabel, IonList } from '@ionic/react';
+import { IonItem, IonItemGroup, IonLabel, IonList, IonModal} from '@ionic/react';
 
 const MEMBER_BOARD = 'B';
 const MEMBER_COORDINATOR = 'C';
@@ -13,6 +13,9 @@ interface ESNer {
     memberType: string;
     position: string;
     picture: string;
+    email: string;
+    facebook: string;
+    phone: string;
 }
 
 const createEsner = (rawEntry: string[]) => {
@@ -23,12 +26,32 @@ const createEsner = (rawEntry: string[]) => {
         memberType: rawEntry[3],
         position: rawEntry[4],
         picture: rawEntry[5],
+        email: rawEntry[6],
+        facebook: rawEntry[7],
+        phone: rawEntry[8],
     };
 };
 
-function Member({ data }: { data: ESNer }) {
+function MemberDetails({ data }: { data: ESNer }){
     return (
-        <IonItem key={data.id} button onClick={() => alert('Wybrałeś ' + data.surname)}>
+        <div>
+            <img alt="ESN Member" className="member-thumbnail" width="100" height="100" src={data.picture} />
+            <h1>{data.name} {data.surname}</h1>
+            <p>{data.position}</p>
+            <p>{data.phone}</p>
+            <p>{data.facebook}</p>
+            <p>{data.email}</p>
+        </div>
+    );
+}
+
+function Member({ data }: { data: ESNer }) {
+    const [showModal, setShowModal] = useState(false);
+    return (
+        <IonItem key={data.id} button onClick={() => setShowModal(true)}>
+            <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
+                <MemberDetails data={data} />
+            </IonModal>
             <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
             <p>
                 <strong>

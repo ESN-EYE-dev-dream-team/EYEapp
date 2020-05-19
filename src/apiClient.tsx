@@ -18,7 +18,7 @@ const createUrl = (sheetName: string, range: string) => {
 
 const getESNersData = () => {
     const sheetName = 'esners';
-    const range = 'A2:F6'; //TODO: automate range to take only rows with some value
+    const range = 'A2:I6'; //TODO: automate range to take only rows with some value
     const url = createUrl(sheetName, range);
     return axios.get(url);
 };
