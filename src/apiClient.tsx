@@ -12,22 +12,19 @@ const apiClient = axios.create({
     },
 });
 
-const createUrl = (sheetName: string, range: string) => {
-    return `${baseGoogleSheetsURL}${DOC_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
+const createUrl = (sheetName: string) => {
+    return `${baseGoogleSheetsURL}${DOC_ID}/values/${sheetName}?key=${API_KEY}`;
 };
 
 const getESNersData = () => {
     const sheetName = 'esners';
-    const range = 'A2:I6'; //TODO: automate range to take only rows with some value
-    const url = createUrl(sheetName, range);
+    const url = createUrl(sheetName);
     return axios.get(url);
 };
 
 const getOfficeHoursData = () => {
     const sheetName = 'officeHours';
-    const range = 'A2:D7'; //TODO: automate range to take only rows with some value
-    const url = createUrl(sheetName, range);
-
+    const url = createUrl(sheetName);
     return axios.get(url);
 };
 

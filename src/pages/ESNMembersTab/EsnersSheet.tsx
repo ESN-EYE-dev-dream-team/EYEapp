@@ -6,6 +6,9 @@ const MEMBER_BOARD = 'B';
 const MEMBER_COORDINATOR = 'C';
 const MEMBER_ORDINARY = 'Z';
 
+//indicator that this is a column description row (first row)
+const ID_COLUMN_IDENTIFIER = 'id';
+
 interface ESNer {
     id: number;
     name: string;
@@ -75,10 +78,11 @@ function EsnersSheet() {
                 data: { values },
             } = respose;
 
-            const newEsners = values.reduce((newEsners: ESNer[], rawEntry: string[]) => {
-                newEsners.push(createEsner(rawEntry));
-                return newEsners;
-            }, []);
+            const newEsners = values.filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
+                .reduce((newEsners: ESNer[], rawEntry: string[]) => {
+                    newEsners.push(createEsner(rawEntry));
+                    return newEsners;
+                }, []);
             setEsners(newEsners);
         });
     }, []);
