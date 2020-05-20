@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
 
+//indicator that this is a column description row (first row)
+const ID_COLUMN_IDENTIFIER = 'id';
+
 interface OfficeHoursEntry {
     id: number;
     day: string;
@@ -29,10 +32,11 @@ function OfficeHoursSheet() {
                 data: { values },
             } = respose;
 
-            const newOfficeHours = values.reduce((newOfficeHours: OfficeHoursEntry[], rawEntry: string[]) => {
-                newOfficeHours.push(createOHEntry(rawEntry));
-                return newOfficeHours;
-            }, []);
+            const newOfficeHours = values.filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
+                .reduce((newOfficeHours: OfficeHoursEntry[], rawEntry: string[]) => {
+                    newOfficeHours.push(createOHEntry(rawEntry));
+                    return newOfficeHours;
+                }, []);
             setOfficeHours(newOfficeHours);
         });
     }, []);
