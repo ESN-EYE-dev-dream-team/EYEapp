@@ -35,6 +35,8 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
+
+
 function MemberDetails({ data }: { data: ESNer }){
     return (
         <div>
@@ -48,14 +50,17 @@ function MemberDetails({ data }: { data: ESNer }){
     );
 }
 
+
 function Member({ data }: { data: ESNer }) {
     const [showModal, setShowModal] = useState(false);
     return (
-        <IonItem key={data.id} button onClick={() => setShowModal(true)}>
+
+
+        <IonItem className="background-white-opacity ESNmember-box" color="whiteOpacity" key={data.id} button onClick={() => setShowModal(true)}>
             <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
                 <MemberDetails data={data} />
             </IonModal>
-            <img alt="ESN Member" className="member-thumbnail" width="60" height="60" src={data.picture} />
+            <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
             <p>
                 <strong>
                     {data.name} {data.surname}
@@ -63,8 +68,11 @@ function Member({ data }: { data: ESNer }) {
                 <br /> {data.position}
             </p>
         </IonItem>
+
     );
 }
+
+
 
 function EsnersSheet() {
     const [esners, setEsners] = useState<ESNer[]>([]);
@@ -101,17 +109,20 @@ function EsnersSheet() {
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
-        <IonList>
-            <IonItemGroup>
-                <IonLabel>Board</IonLabel>
+        <IonList  className="background-white-opacity">
+            <IonItemGroup className="div-box-members">
+
+                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/> Board</IonLabel>
                 {boardMembers}
+
             </IonItemGroup>
+
             <IonItemGroup>
-                <IonLabel>Coordinators</IonLabel>
+                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/>Coordinators</IonLabel>
                 {coordinators}
             </IonItemGroup>
             <IonItemGroup>
-                <IonLabel>Ordinary Members</IonLabel>
+                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/>Ordinary Members</IonLabel>
                 {ordinaryMembers}
             </IonItemGroup>
         </IonList>
