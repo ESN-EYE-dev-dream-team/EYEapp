@@ -81,7 +81,7 @@ function EsnersSheet() {
         <IonList  className="background-white-opacity">
             <IonItemGroup className="div-box-members">
 
-                <IonLabel className="background-white ion-text-center box - members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/> Board</IonLabel>
+                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/> Board</IonLabel>
                 {boardMembers}
 
             </IonItemGroup>

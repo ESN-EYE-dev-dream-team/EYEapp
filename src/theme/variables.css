@@ -77,8 +77,8 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-esn-dark-blue: #2e3192;
   --ion-color-esn-cyan: #00aeef;
   /** CUSTOM FINAL V. 1.1 **/
-  --ciemny-granat: #1D2D44;
-  --jasny-szary: #EAEFF5;
+  --dark-black: #1D2D44;
+  --light-white: #EAEFF5;
 }
 
 /** COLOR - WHITE OPACITY **/

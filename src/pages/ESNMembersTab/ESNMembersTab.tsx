@@ -2,6 +2,7 @@ import React from 'react';
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 import EsnersSheet from './EsnersSheet';
 import '../../theme/styles.css';
+
 const ESNMembersTab: React.FC = () => {
   return (
     <IonPage>
