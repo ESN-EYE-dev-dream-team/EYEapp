@@ -38,7 +38,7 @@ const createEsner = (rawEntry: string[]) => {
 function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }) {
     return (
         <div>
-            <img alt="ESN Member" className="member-thumbnail" width="100" height="100" src={data.picture} />
+            <img alt="ESN Member" className="ESNmember-photo" width="100" height="100" src={data.picture} />
             <h1>
                 {data.name} {data.surname}
             </h1>
@@ -128,7 +128,7 @@ function EsnersSheet() {
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
         <>
-            <IonModal isOpen={showModal}>
+            <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
                 <MemberDetails data={detailsMemberData} onDismiss={closeModal} />
             </IonModal>
             <IonList className="background-white-opacity">
@@ -139,14 +139,14 @@ function EsnersSheet() {
                     {boardMembers}
                 </IonItemGroup>
 
-                <IonItemGroup>
+                <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
                         <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
                         Coordinators
                     </IonLabel>
                     {coordinators}
                 </IonItemGroup>
-                <IonItemGroup>
+                <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
                         <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
                         Ordinary Members
