@@ -32,7 +32,8 @@ function OfficeHoursSheet() {
                 data: { values },
             } = respose;
 
-            const newOfficeHours = values.filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
+            const newOfficeHours = values
+                .filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
                 .reduce((newOfficeHours: OfficeHoursEntry[], rawEntry: string[]) => {
                     newOfficeHours.push(createOHEntry(rawEntry));
                     return newOfficeHours;
