@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
-import { IonItem, IonItemGroup, IonLabel, IonList, IonModal} from '@ionic/react';
+import { IonItem, IonItemGroup, IonLabel, IonList, IonModal, IonButton } from '@ionic/react';
 
 const MEMBER_BOARD = 'B';
 const MEMBER_COORDINATOR = 'C';
@@ -35,31 +35,31 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
-
-
-function MemberDetails({ data }: { data: ESNer }){
+function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }) {
     return (
         <div>
-            <img alt="ESN Member" className="member-thumbnail" width="100" height="100" src={data.picture} />
-            <h1>{data.name} {data.surname}</h1>
+            <img alt="ESN Member" className="ESNmember-photo" width="100" height="100" src={data.picture} />
+            <h1>
+                {data.name} {data.surname}
+            </h1>
             <p>{data.position}</p>
             <p>{data.phone}</p>
             <p>{data.facebook}</p>
             <p>{data.email}</p>
+            <IonButton onClick={() => onDismiss()}>Click me</IonButton>
         </div>
     );
 }
 
-
-function Member({ data }: { data: ESNer }) {
-    const [showModal, setShowModal] = useState(false);
+function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => void }) {
     return (
-
-
-        <IonItem className="background-white-opacity ESNmember-box" color="whiteOpacity" key={data.id} button onClick={() => setShowModal(true)}>
-            <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
-                <MemberDetails data={data} />
-            </IonModal>
+        <IonItem
+            className="background-white-opacity ESNmember-box"
+            color="whiteOpacity"
+            key={data.id}
+            button
+            onClick={() => openModal(data)}
+        >
             <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
             <p>
                 <strong>
@@ -68,14 +68,31 @@ function Member({ data }: { data: ESNer }) {
                 <br /> {data.position}
             </p>
         </IonItem>
-
     );
 }
 
-
-
 function EsnersSheet() {
     const [esners, setEsners] = useState<ESNer[]>([]);
+    const [showModal, setShowModal] = useState(false);
+    const [detailsMemberData, setDetailsMemberData] = useState<ESNer>({
+        id: 0,
+        name: '',
+        surname: '',
+        memberType: '',
+        position: '',
+        picture: '',
+        email: '',
+        facebook: '',
+        phone: '',
+    });
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+    const openModal = (esnerData: ESNer) => {
+        setDetailsMemberData(esnerData);
+        setShowModal(true);
+    };
 
     useEffect(() => {
         apiGoogleSheetsClient.getESNersData().then(respose => {
@@ -86,7 +103,8 @@ function EsnersSheet() {
                 data: { values },
             } = respose;
 
-            const newEsners = values.filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
+            const newEsners = values
+                .filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
                 .reduce((newEsners: ESNer[], rawEntry: string[]) => {
                     newEsners.push(createEsner(rawEntry));
                     return newEsners;
@@ -97,35 +115,46 @@ function EsnersSheet() {
 
     const boardMembers = esners
         .filter(member => member.memberType === MEMBER_BOARD)
-        .map((data: ESNer) => <Member key={data.id} data={data} />);
+        .map((data: ESNer) => <Member key={data.id} data={data} openModal={openModal} />);
 
     const coordinators = esners
         .filter(member => member.memberType === MEMBER_COORDINATOR)
-        .map((data: ESNer) => <Member key={data.id} data={data} />);
+        .map((data: ESNer) => <Member key={data.id} data={data} openModal={openModal} />);
 
     const ordinaryMembers = esners
         .filter(member => member.memberType === MEMBER_ORDINARY)
-        .map((data: ESNer) => <Member key={data.id} data={data} />);
+        .map((data: ESNer) => <Member key={data.id} data={data} openModal={openModal} />);
 
     if (esners === []) return <div> NO ESNERS FOUND </div>;
     return (
-        <IonList  className="background-white-opacity">
-            <IonItemGroup className="div-box-members">
+        <>
+            <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
+                <MemberDetails data={detailsMemberData} onDismiss={closeModal} />
+            </IonModal>
+            <IonList className="background-white-opacity">
+                <IonItemGroup className="div-box-members">
+                    <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
+                        <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" /> Board
+                    </IonLabel>
+                    {boardMembers}
+                </IonItemGroup>
 
-                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/> Board</IonLabel>
-                {boardMembers}
-
-            </IonItemGroup>
-
-            <IonItemGroup>
-                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/>Coordinators</IonLabel>
-                {coordinators}
-            </IonItemGroup>
-            <IonItemGroup>
-                <IonLabel className="background-white ion-text-center box-members" color="blackNormal"><img className="hamburger-menu" src="assets/button.png" alt="Menu icon"/>Ordinary Members</IonLabel>
-                {ordinaryMembers}
-            </IonItemGroup>
-        </IonList>
+                <IonItemGroup className="div-box-members">
+                    <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
+                        <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
+                        Coordinators
+                    </IonLabel>
+                    {coordinators}
+                </IonItemGroup>
+                <IonItemGroup className="div-box-members">
+                    <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
+                        <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
+                        Ordinary Members
+                    </IonLabel>
+                    {ordinaryMembers}
+                </IonItemGroup>
+            </IonList>
+        </>
     );
 }
 
