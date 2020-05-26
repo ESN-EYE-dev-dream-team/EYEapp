@@ -1,60 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAllEvents } from '../EventPageAPI';
-import { IonList } from '@ionic/react';
-// import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonList } from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonList, IonText } from '@ionic/react';
 
-// import { get } from 'lodash';
-// import moment from 'moment';
+import { get } from 'lodash';
+import moment from 'moment';
 
-type EventListState = {
-    eventList: Array<Record<string, any>>;
+const createParsedDate = (dateString: any): string => {
+    if (!dateString) return '';
+    const parsedDate = moment(dateString);
+    return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
 };
 
-// const createParsedDate = (dateString: any): string => {
-//     if (!dateString) return '';
-//     const parsedDate = moment(dateString);
-//     return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
-// };
+//todo desctructure props
+const EventItem = ({ eventData }: any): JSX.Element => (
+    <IonItem routerLink={`/eventDetail/${eventData.id}`}>
+        <IonCard className="welcome-card">
+            <img src={eventData.cover.source} alt="" />
+            <IonCardHeader>
+                <IonCardTitle>{eventData.name}</IonCardTitle>
+                <IonCardSubtitle>
+                    Place: {get(eventData, 'place.name', '-')} @ {createParsedDate(eventData.start_time)}
+                </IonCardSubtitle>
+            </IonCardHeader>
+        </IonCard>
+    </IonItem>
+);
 
-// const createEventElement = (eventData: any): JSX.Element => (
-//     <IonItem routerLink={`/eventDetail/${eventData.id}`}>
-//         <IonCard className="welcome-card">
-//             <img src={eventData.cover.source} alt="" />
-//             <IonCardHeader>
-//                 <IonCardTitle>{eventData.name}</IonCardTitle>
-//                 <IonCardSubtitle>
-//                     Place: {get(eventData, 'place.name', '-')} @ {createParsedDate(eventData.start_time)}
-//                 </IonCardSubtitle>
-//             </IonCardHeader>
-//         </IonCard>
-//     </IonItem>
-// );
+interface Event {}
 
-class EventList extends Component<{}, EventListState> {
-    state: EventListState = {
-        // optional second annotation for better type inference
-        eventList: [],
-    };
+function EventList() {
+    const [eventList, setEventList] = useState<Event[]>([]);
 
-    componentDidMount(): void {
+    useEffect(() => {
         getAllEvents().then(({ data }) => {
-            this.setState({
-                eventList: data,
-            });
+            if (data) setEventList(data);
         });
-    }
+    }, []);
 
-    render(): JSX.Element {
-        return (
-            <IonList>
-                {/* {this.state.eventList.reduce((listContent: Array<JSX.Element>, eventObject) => {
-                    const eventElement = createEventElement(eventObject);
-                    listContent.push(eventElement);
-                    return listContent;
-                }, [])} */}
-            </IonList>
-        );
-    }
+    if (!eventList || eventList === []) return <IonText> No events </IonText>;
+
+    return (
+        <IonList>
+            {eventList.map(event => (
+                <EventItem eventData={event} />
+            ))}
+        </IonList>
+    );
 }
 
 export default EventList;
