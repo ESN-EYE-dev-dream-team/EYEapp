@@ -26,7 +26,9 @@ const EventItem = ({ eventData }: any): JSX.Element => (
     </IonItem>
 );
 
-interface Event {}
+interface Event {
+    id: any;
+}
 
 function EventList() {
     const [eventList, setEventList] = useState<Event[]>([]);
@@ -42,7 +44,7 @@ function EventList() {
     return (
         <IonList>
             {eventList.map(event => (
-                <EventItem eventData={event} />
+                <EventItem key={event.id} eventData={event} />
             ))}
         </IonList>
     );
