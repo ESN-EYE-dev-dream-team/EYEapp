@@ -38,6 +38,16 @@ h1 {
 }
 
 /*   ----------------------------------------------------------------------------- MEMBERS */
+
+.ESNmember-photo-thumbnail{
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+
 .ESNmember-box {
   padding: 10px 40px;
 }
@@ -49,12 +59,37 @@ h1 {
   width: 10px;
 }
 
+
+.member-container{
+  text-align: center;
+  padding: 0 5%;
+}
+
+.member-data{
+    color: #EAEFF5;
+}
+
+.photo-and-background{
+position:relative;
+width: 200px;
+height: 200px;
+margin: 7% auto 10px;
+}
+
+.ESNmember-photo-background{
+  width: 200px;
+  position: relative;
+
+}
+
 .ESNmember-photo {
   border-radius: 100%;
   object-fit: cover;
-  width: 60px;
-  height: 60px;
-  margin-right: 20px;
+width: 120px;
+height: 120px;
+  position: absolute;
+left:20%;
+top:20%;
 }
 
 .div-box-members {
@@ -64,6 +99,40 @@ h1 {
 .box-members {
   padding: 10px;
   font-weight: 400;
+}
+
+.member-name{
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.member-position{
+  font-size: 1.2rem;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.member-contact{
+  font-size: 0.8rem;
+margin: 5px auto 15px;
+}
+
+.ESNmember-icon-contact{
+  width: 20px;
+  height: 20px;
+}
+.ornament-box{
+  width: 100%;
+  margin: 10px 0 0;
+
+}
+
+.pls{
+  width: 200px;
+  height: 200px;
+  color: yellow;
+  background-color: red;
 }
 
 /*   ----------------------------------------------------------------------------- PRACTICAL GUIDE */
