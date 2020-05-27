@@ -1,0 +1,9 @@
+.event-details-container {
+    text-align: center;
+    padding: 0 5%;
+}
+
+.event-details-photo {
+    border-radius: 10px;
+    border: solid 3px #EAEFF5;
+}
