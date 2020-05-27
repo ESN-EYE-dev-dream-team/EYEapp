@@ -128,11 +128,14 @@ margin: 5px auto 15px;
 
 }
 
-.pls{
-  width: 200px;
-  height: 200px;
-  color: yellow;
-  background-color: red;
+
+.icon-back{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 7%;
+  top:7%;
+
 }
 
 /*   ----------------------------------------------------------------------------- PRACTICAL GUIDE */
