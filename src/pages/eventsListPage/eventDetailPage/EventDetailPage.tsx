@@ -7,14 +7,12 @@ import {
     IonToolbar,
     IonTitle,
     IonContent,
-    IonCard,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonCardContent,
+    IonIcon,
 } from '@ionic/react';
 import { getEventsDetails } from '../EventPageAPI';
 import moment from 'moment';
+import './EventDetailPage.css';
+import { calendar, pin, text, time } from "ionicons/icons";
 
 const createParsedDate = (dateString: any): string => {
     if (!dateString) return '';
@@ -52,29 +50,36 @@ const EventDetailPage: React.FC = ({ match }: any) => {
             setEventData(newEventData);
         });
     }, [match.params.id]);
+    const startTimeArray = createParsedDate(start_time).split(',');
+    const endTimeArray = createParsedDate(end_time).split(',');
 
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref="/tab1" />
+                        <IonBackButton defaultHref="/eventsList" />
                     </IonButtons>
                     <IonTitle>Event detail</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonCard>
-                    <IonCardHeader>
-                        <img src={cover.source} alt="" />
-                        <IonCardTitle> {name} </IonCardTitle>
-                        <IonCardSubtitle>Start: {createParsedDate(start_time)}</IonCardSubtitle>
-                        <IonCardSubtitle>End: {createParsedDate(end_time)}</IonCardSubtitle>
-                        <IonCardSubtitle>Place: {place.name}</IonCardSubtitle>
-                    </IonCardHeader>
-
-                    <IonCardContent>{formattedDesciption}</IonCardContent>
-                </IonCard>
+                <div className="event-details-container">
+                    <h2>{name}</h2>
+                    <img className="event-details-photo" src={cover.source} alt="" />
+                    <p className="ion-text-justify">
+                        <IonIcon icon={calendar} /> <strong>Date: </strong>{startTimeArray[0] + ', ' + startTimeArray[1]}
+                    </p>
+                    <p className="ion-text-justify">
+                        <IonIcon icon={time} /> <strong>Hour: </strong>{startTimeArray[startTimeArray.length - 1] + ' - ' + endTimeArray[endTimeArray.length - 1]}
+                    </p>
+                    <p className="ion-text-justify">
+                        <IonIcon icon={pin} /> <strong>Place: </strong>{place.name}
+                    </p>
+                    <p className="ion-text-justify">
+                        <IonIcon icon={text} /> <strong>Description:</strong><br/> {formattedDesciption}
+                    </p>
+                </div>
             </IonContent>
         </IonPage>
     );
