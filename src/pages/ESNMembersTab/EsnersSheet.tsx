@@ -39,7 +39,8 @@ const createEsner = (rawEntry: string[]) => {
 function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }) {
   return (  <>
     <div className="member-container">
-      <IonIcon className="pls" src="assets/ornaments/icon-back-white.svg" onClick={() => onDismiss()} />
+<img alt="Icon back" className="icon-back" src="assets/ornaments/icon-back-white.png" onClick={() => onDismiss()}/>
+
       <div className="photo-and-background">
         <img alt="Background ornament" className="ESNmember-photo-background" src="assets/ornaments/icon-photo-background.png" />
         <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
