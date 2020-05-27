@@ -11,11 +11,13 @@ const EventsListPage: React.FC = () => {
                 <IonGrid>
                     <IonRow>
                         <IonCol size="12">
-                            <h1 className="ion-text-center">Events</h1>
+                            <h1 className="ion-text-center">Check out our <strong>events</strong></h1>
                         </IonCol>
                     </IonRow>
                     <IonRow>
-                        <EventList />
+                        <IonCol size="12">
+                            <EventList />
+                        </IonCol>
                     </IonRow>
                 </IonGrid>
             </IonContent>

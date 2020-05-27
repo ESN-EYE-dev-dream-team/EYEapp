@@ -1,4 +1,21 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+.event-thumbnail {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.event-list-item {
+  background-color:#EAEFF5;
+  --ion-background-color: #EAEFF5;
+  --ion-text-color: #1D2D44;
+}
+
+.event-item-box {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.event-group-label{
+  font-size:1.7rem;
 }
