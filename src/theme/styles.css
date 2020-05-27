@@ -66,14 +66,14 @@ h1 {
 }
 
 .member-data{
-    color: #EAEFF5;
+  color: #EAEFF5;
 }
 
 .photo-and-background{
-position:relative;
-width: 200px;
-height: 200px;
-margin: 7% auto 10px;
+  position:relative;
+  width: 200px;
+  height: 200px;
+  margin: 7% auto 10px;
 }
 
 .ESNmember-photo-background{
@@ -85,11 +85,11 @@ margin: 7% auto 10px;
 .ESNmember-photo {
   border-radius: 100%;
   object-fit: cover;
-width: 120px;
-height: 120px;
+  width: 120px;
+  height: 120px;
   position: absolute;
-left:20%;
-top:20%;
+  left:20%;
+  top:20%;
 }
 
 .div-box-members {
@@ -115,19 +115,18 @@ top:20%;
 
 .member-contact{
   font-size: 0.8rem;
-margin: 5px auto 15px;
+  margin: 5px auto 15px;
 }
 
 .ESNmember-icon-contact{
   width: 20px;
   height: 20px;
 }
+
 .ornament-box{
   width: 100%;
   margin: 10px 0 0;
-
 }
-
 
 .icon-back{
   width: 30px;
