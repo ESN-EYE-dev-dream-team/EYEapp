@@ -47,13 +47,19 @@ function OfficeHoursSheet() {
         <div>
             {officeHours.map((data: any) => (
                 <span key={data.id}>
-                    <p>
+                    <p className="officeHours-days">
+                    <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-full.png" />
                         {data.day} {data.hour} <strong>{data.who}</strong>
                     </p>
                 </span>
             ))}
         </div>
+
+
     );
+
+
+
 }
 
 export default OfficeHoursSheet;
