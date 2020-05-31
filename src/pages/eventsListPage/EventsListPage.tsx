@@ -11,7 +11,9 @@ const EventsListPage: React.FC = () => {
                 <IonGrid>
                     <IonRow>
                         <IonCol size="12">
-                            <h1 className="ion-text-center color-text-white heading-main">Check out our <strong>events</strong></h1>
+                            <h1 className="ion-text-center color-text-white heading-main">
+                                Check out our <strong>events</strong>
+                            </h1>
                         </IonCol>
                     </IonRow>
                     <IonRow>
