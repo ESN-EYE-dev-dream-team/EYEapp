@@ -22,6 +22,9 @@ const createOHEntry = (rawEntry: string[]) => {
 
 function OfficeHoursSheet() {
     const [officeHours, setOfficeHours] = useState<any>([]);
+    const officeAvailableDot = <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-full.png" />;
+    const officeUnavailableDot = <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-empty.png" />;
+    const availabilityConditionString = '-';
 
     useEffect(() => {
         apiGoogleSheetsClient.getOfficeHoursData().then(respose => {
@@ -48,18 +51,13 @@ function OfficeHoursSheet() {
             {officeHours.map((data: any) => (
                 <span key={data.id}>
                     <p className="officeHours-days">
-                    <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-full.png" />
-                        {data.day} {data.hour} <strong>{data.who}</strong>
+                        {data.hour.includes(availabilityConditionString) ? officeAvailableDot : officeUnavailableDot}
+                        {data.day} {data.hour}
                     </p>
                 </span>
             ))}
         </div>
-
-
     );
-
-
-
 }
 
 export default OfficeHoursSheet;
