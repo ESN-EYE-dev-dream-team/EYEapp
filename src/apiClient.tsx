@@ -12,17 +12,17 @@ const apiClient = axios.create({
     },
 });
 
-const createUrl = (sheetName: string) => {
+const createUrl = (sheetName: string): string => {
     return `${baseGoogleSheetsURL}${DOC_ID}/values/${sheetName}?key=${API_KEY}`;
 };
 
-const getESNersData = () => {
+const getESNersData = (): Promise<any> => {
     const sheetName = 'esners';
     const url = createUrl(sheetName);
     return axios.get(url);
 };
 
-const getOfficeHoursData = () => {
+const getOfficeHoursData = (): Promise<any> => {
     const sheetName = 'officeHours';
     const url = createUrl(sheetName);
     return axios.get(url);

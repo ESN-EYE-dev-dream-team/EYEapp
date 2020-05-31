@@ -12,7 +12,7 @@ const createParsedDate = (dateString: any): string => {
     return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
 };
 
-export default function EventDetailPage({ data, onDismiss }: { data: any; onDismiss: any }) {
+export default function EventDetailPage({ data, onDismiss }: { data: any; onDismiss: any }): JSX.Element {
     const { description, cover, start_time, end_time, name, place = { name: '-' } } = data;
     const formattedDesciption = description.split('\n').map((item: any, key: any) => {
         return (

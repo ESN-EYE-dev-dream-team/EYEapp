@@ -36,7 +36,7 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
-function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }) {
+function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }): JSX.Element {
     return (
         <>
             <div className="member-container">
@@ -68,7 +68,7 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
     );
 }
 
-function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => void }) {
+function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => void }): JSX.Element {
     return (
         <IonItem
             className="background-white-opacity ESNmember-box"
@@ -76,7 +76,7 @@ function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => 
             key={data.id}
             detail = {false}
             button
-            onClick={() => openModal(data)}
+            onClick={(): void => openModal(data)}
         >
             <img alt="ESN Member" className="ESNmember-photo-thumbnail" src={data.picture} />
             <p>
@@ -89,7 +89,7 @@ function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => 
     );
 }
 
-function EsnersSheet() {
+function EsnersSheet(): JSX.Element {
     const [esners, setEsners] = useState<ESNer[]>([]);
     const [showModal, setShowModal] = useState(false);
     const [detailsMemberData, setDetailsMemberData] = useState<ESNer>({

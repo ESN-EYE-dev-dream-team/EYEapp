@@ -20,7 +20,7 @@ const createOHEntry = (rawEntry: string[]) => {
     };
 };
 
-function OfficeHoursSheet() {
+function OfficeHoursSheet(): JSX.Element {
     const [officeHours, setOfficeHours] = useState<any>([]);
     const officeAvailableDot = <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-full.png" />;
     const officeUnavailableDot = <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-empty.png" />;
