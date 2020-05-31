@@ -8,7 +8,6 @@ const PracticalGuideTab: React.FC = () => {
                 <IonGrid>
                     <IonRow>
                         <IonCol size="12">
-                            <h1 className="ion-text-center">Practical Guide</h1>
                         </IonCol>
                     </IonRow>
                 </IonGrid>
