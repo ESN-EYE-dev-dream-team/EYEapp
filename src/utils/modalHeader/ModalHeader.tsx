@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ModalHeader.scss';
 
-export default function ModalHeader({ onClickHandler }: { onClickHandler: Function }) {
+export default function ModalHeader({ onClickHandler }: { onClickHandler: Function }): JSX.Element {
     return (
         <div className="top-bar">
             <img
