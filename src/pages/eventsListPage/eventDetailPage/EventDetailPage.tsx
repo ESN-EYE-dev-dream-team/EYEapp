@@ -50,6 +50,7 @@ const EventDetailPage: React.FC = ({ match }: any) => {
             setEventData(newEventData);
         });
     }, [match.params.id]);
+    //TODO: make structure to assign the data
     const startTimeArray = createParsedDate(start_time).split(',');
     const endTimeArray = createParsedDate(end_time).split(',');
 
@@ -76,9 +77,8 @@ const EventDetailPage: React.FC = ({ match }: any) => {
                     <p className="ion-text-justify">
                         <IonIcon icon={pin} /> <strong>Place: </strong>{place.name}
                     </p>
-                    <p className="ion-text-justify">
-                        <IonIcon icon={text} /> <strong>Description:</strong><br/> {formattedDesciption}
-                    </p>
+                    <hr className="event-details-divider" />
+                    <p className="ion-text-justify">{formattedDesciption}</p>
                 </div>
             </IonContent>
         </IonPage>
