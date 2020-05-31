@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
 import { IonItem, IonItemGroup, IonLabel, IonList, IonModal } from '@ionic/react';
+import ModalHeader from 'utils/modalHeader/ModalHeader';
 
 const MEMBER_BOARD = 'B';
 const MEMBER_COORDINATOR = 'C';
@@ -39,13 +40,7 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
     return (
         <>
             <div className="member-container">
-                <img
-                    alt="Icon back"
-                    className="icon-back"
-                    src="assets/ornaments/icon-back-white.png"
-                    onClick={() => onDismiss()}
-                />
-
+                <ModalHeader onClickHandler={onDismiss} />
                 <div className="photo-and-background">
                     <img
                         alt="Background ornament"

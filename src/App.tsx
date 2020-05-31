@@ -42,7 +42,7 @@ const App: React.FC = () => (
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="eventsist" href="/eventsList">
-                        <IonIcon icon={list} />
+                        {<IonIcon icon={list} />}
                         <IonLabel>Event list</IonLabel>
                     </IonTabButton>
                     <IonTabButton tab="officehours" href="/officehours">
