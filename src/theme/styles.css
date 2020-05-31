@@ -1,182 +1,168 @@
 /*   ----------------------------------------------------------------------------- GENERAL*/
 
 h1 {
-  color: yellow;
+    color: yellow;
 }
 
 .fluid-container {
-  margin: 7%;
+    margin: 7%;
 }
 
 .color-text-black {
-  color: #1D2D44;
+    color: #1d2d44;
 }
 
 .color-text-white {
-  color: #EAEFF5;
+    color: #eaeff5;
 }
 
 .background-white {
-  background-color: #EAEFF5;
-  position: relative;
+    background-color: #eaeff5;
+    position: relative;
 }
 
 .background-white-opacity {
-  background-color: rgba(234, 239, 245, 0.03);
+    background-color: rgba(234, 239, 245, 0.03);
 }
 
 .heading-main {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 10%;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 10%;
 }
 
 .paragraph-white {
-  font-size: 0.8rem;
-  font-weight: 200;
-  line-height: 1.2;
-  margin: 5% 7% 7%;
+    font-size: 0.8rem;
+    font-weight: 200;
+    line-height: 1.2;
+    margin: 5% 7% 7%;
 }
-.ornament-box{
-  width: 100%;
-  margin: 10px 0 0;
+.ornament-box {
+    width: 100%;
+    margin: 10px 0 0;
 }
 /*   ----------------------------------------------------------------------------- MEMBERS */
 
-.ESNmember-photo-thumbnail{
-  border-radius: 100%;
-  object-fit: cover;
-  margin-right: 20px;
-  width: 60px;
-  height: 60px;
+.ESNmember-photo-thumbnail {
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 20px;
+    width: 60px;
+    height: 60px;
 }
 
-
 .ESNmember-box {
-  padding: 10px 40px;
+    padding: 10px 40px;
 }
 
 .hamburger-menu {
-  color: #1D2D44;
-  position: absolute;
-  left: 40px;
-  width: 10px;
+    color: #1d2d44;
+    position: absolute;
+    left: 40px;
+    width: 10px;
 }
 
-
-.member-container{
-  text-align: center;
-  padding: 0 5%;
+.member-container {
+    text-align: center;
+    padding: 0 5%;
 }
 
-.member-data{
-  color: #EAEFF5;
+.member-data {
+    color: #eaeff5;
 }
 
-.photo-and-background{
-  position:relative;
-  width: 200px;
-  height: 200px;
-  margin: 7% auto 10px;
+.photo-and-background {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 7% auto 10px;
 }
 
-.ESNmember-photo-background{
-  width: 200px;
-  position: relative;
-
+.ESNmember-photo-background {
+    width: 200px;
+    position: relative;
 }
 
 .ESNmember-photo {
-  border-radius: 100%;
-  object-fit: cover;
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  left:20%;
-  top:20%;
+    border-radius: 100%;
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    left: 20%;
+    top: 20%;
 }
 
 .div-box-members {
-  position: relative;
+    position: relative;
 }
 
 .box-members {
-  padding: 10px;
-  font-weight: 400;
+    padding: 10px;
+    font-weight: 400;
 }
 
-.member-name{
-  font-weight: 600;
-  font-size: 2rem;
-  margin: 0;
+.member-name {
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 0;
 }
 
-.member-position{
-  font-size: 1.2rem;
-  margin-top: 5px;
-  margin-bottom: 30px;
+.member-position {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-bottom: 30px;
 }
 
-.member-contact{
-  font-size: 0.8rem;
-  margin: 5px auto 15px;
+.member-contact {
+    font-size: 0.8rem;
+    margin: 5px auto 15px;
 }
 
-.ESNmember-icon-contact{
-  width: 20px;
-  height: 20px;
+.ESNmember-icon-contact {
+    width: 20px;
+    height: 20px;
 }
 
-.icon-back{
-  width: 30px;
-  height: 30px;
-  position: absolute;
+.icon-back {
+    width: 30px;
+    height: 30px;
+    /* position: absolute;
   left: 7%;
-  top:7%;
-
+  top:7%; */
 }
 
 /*   ----------------------------------------------------------------------------- PRACTICAL GUIDE */
 /*   ----------------------------------------------------------------------------- OFFICE HOURS */
-.dot-icon{
-  width: 10px;
-  margin: 0 5% 0 20px;
+.dot-icon {
+    width: 10px;
+    margin: 0 5% 0 20px;
 }
 
-.officeHours-days{
-  font-size: 1rem;
+.officeHours-days {
+    font-size: 1rem;
 }
-
-
-
-
-
-
-
-
-
-
 
 /*   ----------------------------------------------------------------------------- EVENTS */
 
 .event-thumbnail {
-  border-radius: 10px;
-  object-fit: cover;
-  width: 100px;
-  margin-right: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    width: 100px;
+    margin-right: 10px;
 }
 
 .event-list-item {
-  background-color:#EAEFF5;
-  --ion-background-color: #EAEFF5;
-  --ion-text-color: #1D2D44;
+    background-color: #eaeff5;
+    --ion-background-color: #eaeff5;
+    --ion-text-color: #1d2d44;
 }
 
 .event-item-box {
-  margin: 10px;
-  border-radius: 10px;
+    margin: 10px;
+    border-radius: 10px;
 }
 
-.event-group-label{
-  font-size:1.7rem;
+.event-group-label {
+    font-size: 1.7rem;
 }
