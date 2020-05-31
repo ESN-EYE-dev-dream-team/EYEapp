@@ -7,8 +7,7 @@ const PracticalGuideTab: React.FC = () => {
             <IonContent>
                 <IonGrid>
                     <IonRow>
-                        <IonCol size="12">
-                        </IonCol>
+                        <IonCol size="12"></IonCol>
                     </IonRow>
                 </IonGrid>
             </IonContent>
