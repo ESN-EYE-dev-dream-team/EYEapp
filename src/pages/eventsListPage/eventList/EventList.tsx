@@ -71,7 +71,7 @@ const createParsedDate = (dateString: any): string => {
 
 //todo desctructure props
 const EventItem = ({ eventData }: any): JSX.Element => (
-    <IonItem className="event-list-item event-item-box" routerLink={`/eventDetail/${eventData.id}`}>
+    <IonItem className="event-list-item event-item-box" detail={false} routerLink={`/eventDetail/${eventData.id}`}>
         <img alt="Event" className="event-thumbnail" src={eventData.cover.source} />
         <p>
             <strong>{eventData.name}</strong>

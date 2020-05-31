@@ -79,6 +79,7 @@ function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => 
             className="background-white-opacity ESNmember-box"
             color="whiteOpacity"
             key={data.id}
+            detail = {false}
             button
             onClick={() => openModal(data)}
         >
