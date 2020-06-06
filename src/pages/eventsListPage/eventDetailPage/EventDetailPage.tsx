@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonIcon } from '@ionic/react';
 import moment from 'moment';
-import { calendar, pin, text, time } from 'ionicons/icons';
+import { calendar, pin, time } from 'ionicons/icons';
 
 import ModalHeader from 'utils/modalHeader/ModalHeader';
 import './EventDetailPage.scss';
@@ -43,10 +43,7 @@ export default function EventDetailPage({ data, onDismiss }: { data: any; onDism
                 <IonIcon icon={pin} /> <strong>Place: </strong>
                 {place.name}
             </p>
-            <p className="ion-text-justify">
-                <IonIcon icon={text} /> <strong>Description:</strong>
-                <br /> {formattedDesciption}
-            </p>
+            <p className="ion-text-justify">{formattedDesciption}</p>
         </div>
     );
 }
