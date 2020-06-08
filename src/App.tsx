@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { list, alarm, people, document } from 'ionicons/icons';
 import EventsListPage from './pages/eventsListPage/EventsListPage';
 import OfficeHoursTab from './pages/officeHoursTab/OfficeHoursTab';
 import ESNMembersTab from './pages/ESNMembersTab/ESNMembersTab';
@@ -39,11 +38,11 @@ import iconPersonEmpty from './assets/tabs/icon-person-empty.svg';
 import iconDocumentEmpty from './assets/tabs/icon-document-empty.svg';
 
 const App: React.FC = () => {
-    const [selectedTab, setSelectedTab] = useState<String>('');
+    const [selectedTab, setSelectedTab] = useState<string>('');
 
     return (
         <IonApp>
-            <IonReactRouter>
+            <IonReactRouter basename="/EYEapp">
                 <IonTabs>
                     <IonRouterOutlet>
                         <Route path="/eventdetail/:id" component={EventDetailPage} exact={true} />
