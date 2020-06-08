@@ -48,6 +48,7 @@ h1 {
 
 }
 
+
 .icon-back {
     width: 30px;
     height: 30px;
@@ -192,6 +193,7 @@ right: 10%;
 
 .event-box-big{
   font-size: 1rem;
+
 }
 
 .margin-bottom-event{
@@ -210,4 +212,5 @@ right: 10%;
 }
 .icon-event-description{
   margin-right: 20px;
+
 }
