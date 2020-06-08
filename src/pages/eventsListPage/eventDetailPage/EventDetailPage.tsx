@@ -27,20 +27,21 @@ export default function EventDetailPage({ data, onDismiss }: { data: any; onDism
     const endTimeArray = createParsedDate(end_time).split(',');
 
     return (
-        <div className="event-details-container">
-            <ModalHeader onClickHandler={onDismiss} />
+        <div className="event-details-container fluid-container-event-details">
+            <ModalHeader  onClickHandler={onDismiss} />
+            <h2 className="event-title">{name}</h2>
             <img className="event-details-photo" src={cover.source} alt="Event cover photo" />
-            <h2>{name}</h2>
+
             <p className="ion-text-justify">
-                <IonIcon icon={calendar} /> <strong>Date: </strong>
+                <IonIcon className="icon-event-description" icon={calendar} /> <strong>Date: </strong>
                 {startTimeArray[0] + ', ' + startTimeArray[1]}
             </p>
             <p className="ion-text-justify">
-                <IonIcon icon={time} /> <strong>Hour: </strong>
+                <IonIcon className="icon-event-description" icon={time} /> <strong>Hour: </strong>
                 {startTimeArray[startTimeArray.length - 1] + ' - ' + endTimeArray[endTimeArray.length - 1]}
             </p>
             <p className="ion-text-justify">
-                <IonIcon icon={pin} /> <strong>Place: </strong>
+                <IonIcon className="icon-event-description" icon={pin} /> <strong>Place: </strong>
                 {place.name}
             </p>
             <p className="ion-text-justify">{formattedDesciption}</p>
