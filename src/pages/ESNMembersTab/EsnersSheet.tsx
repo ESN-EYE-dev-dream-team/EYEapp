@@ -62,7 +62,7 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
             </div>
             <div className="ornament-box">
                 {' '}
-                <img alt="Ornament waves" src="assets/ornaments/icon-ornament-very-short.png" />
+                <img className="box-waves-bottom" alt="Ornament waves" src="assets/ornaments/icon-ornament-very-short.png" />
             </div>
         </>
     );

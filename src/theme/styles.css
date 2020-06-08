@@ -38,9 +38,22 @@ h1 {
     margin: 5% 7% 7%;
 }
 .ornament-box {
-    width: 100%;
+    width: 101%;
     margin: 10px 0 0;
 }
+
+.box-waves-bottom{
+  position: relative;
+  bottom: -10px;
+
+}
+@media only screen and (min-height: 720px) {
+  .box-waves-bottom {
+    position:absolute;
+    bottom:0;
+  }
+}
+
 /*   ----------------------------------------------------------------------------- MEMBERS */
 
 .ESNmember-photo-thumbnail {
@@ -136,13 +149,17 @@ h1 {
 /*   ----------------------------------------------------------------------------- OFFICE HOURS */
 .dot-icon {
     width: 10px;
-    margin: 0 5% 0 20px;
+    margin: 0 5% 0 5%;
 }
 
 .officeHours-days {
     font-size: 1rem;
+    margin: 3% 5%;
 }
-
+.hour-right{
+position: absolute;
+right: 10%;
+}
 /*   ----------------------------------------------------------------------------- EVENTS */
 
 .event-thumbnail {
@@ -164,5 +181,13 @@ h1 {
 }
 
 .event-group-label {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+}
+
+.event-box-small{
+  font-size: 0.6rem;
+}
+
+.event-box-big{
+  font-size: 1rem;
 }
