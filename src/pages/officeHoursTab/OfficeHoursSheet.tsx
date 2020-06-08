@@ -52,7 +52,7 @@ function OfficeHoursSheet(): JSX.Element {
                 <span key={data.id}>
                     <p className="officeHours-days">
                         {data.hour.includes(availabilityConditionString) ? officeAvailableDot : officeUnavailableDot}
-                        {data.day} {data.hour}
+                        {data.day} <span className="hour-right">{data.hour}</span>
                     </p>
                 </span>
             ))}

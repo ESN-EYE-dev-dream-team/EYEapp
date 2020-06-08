@@ -120,9 +120,9 @@ function EventList(): JSX.Element {
     const EventItem = ({ eventData }: any): JSX.Element => (
         <IonItem className="event-list-item event-item-box" onClick={() => openModal(eventData)}>
             <img alt="Event" className="event-thumbnail" src={eventData.cover.source} />
-            <p>
-                <strong>{eventData.name}</strong>
-                <br /> {createParsedDate(eventData.start_time)}
+            <p> <span className="event-box-big">
+                <strong>{eventData.name}</strong> </span>
+                <br />  <span className="event-box-small">{createParsedDate(eventData.start_time)}</span>
             </p>
         </IonItem>
     );
@@ -149,6 +149,7 @@ function EventList(): JSX.Element {
                     <h2 className="event-group-label ion-text-center">Today</h2>
                     {todayEvents.map(event => (
                         <EventItem key={event.id} eventData={event} />
+
                     ))}
                 </IonItemGroup>
                 <IonItemGroup>
