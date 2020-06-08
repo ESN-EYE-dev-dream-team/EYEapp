@@ -47,6 +47,15 @@ h1 {
   bottom: -10px;
 
 }
+
+
+.icon-back {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 7%;
+    top:5%;
+}
 @media only screen and (min-height: 720px) {
   .box-waves-bottom {
     position:absolute;
@@ -137,13 +146,7 @@ h1 {
     height: 20px;
 }
 
-.icon-back {
-    width: 30px;
-    height: 30px;
-    /* position: absolute;
-  left: 7%;
-  top:7%; */
-}
+
 
 /*   ----------------------------------------------------------------------------- PRACTICAL GUIDE */
 /*   ----------------------------------------------------------------------------- OFFICE HOURS */
@@ -190,4 +193,24 @@ right: 10%;
 
 .event-box-big{
   font-size: 1rem;
+
+}
+
+.margin-bottom-event{
+  margin-bottom: 60px;
+}
+
+.event-title{
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.fluid-container-event-details {
+    margin: 0 5% 7%;
+    overflow: scroll;
+}
+.icon-event-description{
+  margin-right: 20px;
+
 }

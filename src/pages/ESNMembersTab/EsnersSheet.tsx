@@ -92,6 +92,9 @@ function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => 
 function EsnersSheet(): JSX.Element {
     const [esners, setEsners] = useState<ESNer[]>([]);
     const [showModal, setShowModal] = useState(false);
+    const [isHiddenBoard, setIsHiddenBoard] = useState(false);
+    const [isHiddenCoordinators, setIsHiddenCoordinators] = useState(false);
+    const [isHiddenOrdinary, setIsHiddenOrdinary] = useState(false);
     const [detailsMemberData, setDetailsMemberData] = useState<ESNer>({
         id: 0,
         name: '',
@@ -103,6 +106,30 @@ function EsnersSheet(): JSX.Element {
         facebook: '',
         phone: '',
     });
+
+    const toggleHiddenBoard = () => {
+        if (!isHiddenBoard) {
+            setIsHiddenBoard(true);
+        } else {
+            setIsHiddenBoard(false);
+        }
+    };
+
+    const toggleHiddenCoordinators = () => {
+        if (!isHiddenCoordinators) {
+            setIsHiddenCoordinators(true);
+        } else {
+            setIsHiddenCoordinators(false);
+        }
+    };
+
+    const toggleHiddenOrdinary = () => {
+        if (!isHiddenOrdinary) {
+            setIsHiddenOrdinary(true);
+        } else {
+            setIsHiddenOrdinary(false);
+        }
+    };
 
     const closeModal = () => {
         setShowModal(false);
@@ -120,6 +147,7 @@ function EsnersSheet(): JSX.Element {
             const {
                 data: { values },
             } = respose;
+
 
             const newEsners = values
                 .filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
@@ -152,28 +180,28 @@ function EsnersSheet(): JSX.Element {
             <IonList className="background-white-opacity">
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" /> Board
+                        <img onClick={toggleHiddenBoard} className="hamburger-menu" src="assets/button.png" alt="Menu icon" /> Board
                     </IonLabel>
-                    {boardMembers}
+                    {!isHiddenBoard && boardMembers}
                 </IonItemGroup>
 
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
+                        <img onClick={toggleHiddenCoordinators} className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
                         Coordinators
                     </IonLabel>
-                    {coordinators}
+                    {!isHiddenCoordinators && coordinators}
                 </IonItemGroup>
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
+                        <img onClick={toggleHiddenOrdinary} className="hamburger-menu" src="assets/button.png" alt="Menu icon"
+                        />
                         Ordinary Members
                     </IonLabel>
-                    {ordinaryMembers}
+                    {!isHiddenOrdinary && ordinaryMembers}
                 </IonItemGroup>
             </IonList>
         </>
     );
 }
-
 export default EsnersSheet;
