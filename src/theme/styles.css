@@ -80,8 +80,11 @@ h1 {
 .hamburger-menu {
     color: #1d2d44;
     position: absolute;
-    left: 40px;
-    width: 10px;
+    left: 35px;
+    width: 18px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .member-container {
@@ -146,6 +149,10 @@ h1 {
     height: 20px;
 }
 
+.members-label{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
 
 
 /*   ----------------------------------------------------------------------------- PRACTICAL GUIDE */
@@ -169,7 +176,7 @@ right: 10%;
     border-radius: 10px;
     object-fit: cover;
     width: 100px;
-    margin-right: 10px;
+    margin: 8px 10px 8px 0;
 }
 
 .event-list-item {
@@ -213,4 +220,15 @@ right: 10%;
 .icon-event-description{
   margin-right: 20px;
 
+}
+
+ion-item.event-item-box{
+    --inner-highlight-end: 0px;
+    --padding-start:8px
+}
+
+
+
+.small-padding-event{
+  margin:0;
 }
