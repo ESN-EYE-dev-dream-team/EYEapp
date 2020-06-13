@@ -180,7 +180,7 @@ function EsnersSheet(): JSX.Element {
             <IonList className="background-white-opacity">
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img onClick={toggleHiddenBoard} className="hamburger-menu" src="assets/button.png" alt="Menu icon" /> Board
+                        <img onClick={toggleHiddenBoard} className="hamburger-menu" src="assets/button.png" alt="Menu icon" /> <span className="members-label">Board</span>
                     </IonLabel>
                     {!isHiddenBoard && boardMembers}
                 </IonItemGroup>
@@ -188,7 +188,7 @@ function EsnersSheet(): JSX.Element {
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
                         <img onClick={toggleHiddenCoordinators} className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
-                        Coordinators
+                        <span className="members-label">Coordinators</span>
                     </IonLabel>
                     {!isHiddenCoordinators && coordinators}
                 </IonItemGroup>
@@ -196,7 +196,7 @@ function EsnersSheet(): JSX.Element {
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
                         <img onClick={toggleHiddenOrdinary} className="hamburger-menu" src="assets/button.png" alt="Menu icon"
                         />
-                        Ordinary Members
+                        <span className="members-label">Ordinary Members</span>
                     </IonLabel>
                     {!isHiddenOrdinary && ordinaryMembers}
                 </IonItemGroup>

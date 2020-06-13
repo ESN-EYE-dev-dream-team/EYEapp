@@ -51,7 +51,7 @@ const mockEvents = [
         end_time: moment()
             .add(1, 'month')
             .toString(),
-        name: 'Online Cooking with ESN-EYE',
+        name:'Online Cooking with ESN-EYE',
         description: `Gluten.
   A word that provokes either fear or excitement. There is nothig in between... But now you have a perfect chance to tame this beast in your own kitchen! 🐻👩🏽‍🍳👨🏼‍🍳
   If you love freshly baked, beautiful golden bread 🍞and the taske of flavorful traditional Polish pierogi🥟 you cannot miss this on-line event!
@@ -120,7 +120,7 @@ function EventList(): JSX.Element {
     const EventItem = ({ eventData }: any): JSX.Element => (
         <IonItem className="event-list-item event-item-box" onClick={() => openModal(eventData)}>
             <img alt="Event" className="event-thumbnail" src={eventData.cover.source} />
-            <p> <span className="event-box-big">
+            <p className="small-padding-event"> <span className="event-box-big">
                 <strong>{eventData.name}</strong> </span>
                 <br />  <span className="event-box-small">{createParsedDate(eventData.start_time)}</span>
             </p>

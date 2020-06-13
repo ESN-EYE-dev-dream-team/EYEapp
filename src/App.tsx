@@ -54,7 +54,7 @@ const App: React.FC = () => {
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">
                         <IonTabButton tab="eventsList" href="/eventsList" onClick={() => setSelectedTab('eventsList')}>
-                            <IonIcon src={selectedTab === 'eventsList' ? iconCalendarEmpty : iconCalendarFull} />
+                            <IonIcon src={selectedTab === 'eventsList' ? iconCalendarFull : iconCalendarEmpty} />
                             <IonLabel>Events</IonLabel>
                         </IonTabButton>
                         <IonTabButton
@@ -62,11 +62,11 @@ const App: React.FC = () => {
                             href="/officeHours"
                             onClick={() => setSelectedTab('officeHours')}
                         >
-                            <IonIcon src={selectedTab === 'officeHours' ? iconClockEmpty : iconClockFull} />
+                            <IonIcon src={selectedTab === 'officeHours' ? iconClockFull : iconClockEmpty} />
                             <IonLabel>Office Hours</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="esnMembers" href="/esnMembers" onClick={() => setSelectedTab('esnMembers')}>
-                            <IonIcon src={selectedTab === 'esnMembers' ? iconPersonEmpty : iconPersonFull} />
+                            <IonIcon src={selectedTab === 'esnMembers' ? iconPersonFull : iconPersonEmpty} />
                             <IonLabel>ESN Members</IonLabel>
                         </IonTabButton>
                         <IonTabButton
@@ -74,7 +74,7 @@ const App: React.FC = () => {
                             href="/practicalGuide"
                             onClick={() => setSelectedTab('practicalGuide')}
                         >
-                            <IonIcon src={selectedTab === 'practicalGuide' ? iconDocumentEmpty : iconDocumentFull} />
+                            <IonIcon src={selectedTab === 'practicalGuide' ? iconDocumentFull : iconDocumentEmpty} />
 
                             <IonLabel>Practical Guide</IonLabel>
                         </IonTabButton>
