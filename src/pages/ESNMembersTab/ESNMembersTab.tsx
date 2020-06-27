@@ -12,7 +12,8 @@ const ESNMembersTab: React.FC = () => {
                         <IonCol size="12">
                             <h1 className="ion-text-center color-text-white heading-main">Members of ESN</h1>
                             <p className="ion-text-justify color-text-white paragraph-white">
-                                We are very happy to introduce you our ESN members. If you want to contact any of them, you can enter their profile in order to get their contacts.
+                                We are very happy to introduce you our ESN members. If you want to contact any of them,
+                                you can enter their profile in order to get their contacts.
                             </p>
                         </IonCol>
                     </IonRow>
@@ -22,7 +23,6 @@ const ESNMembersTab: React.FC = () => {
                         </IonCol>
                     </IonRow>
                 </IonGrid>
-
             </IonContent>
         </IonPage>
     );

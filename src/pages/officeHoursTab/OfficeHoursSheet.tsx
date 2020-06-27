@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { apiGoogleSheetsClient } from '../../apiClient';
 
+import iconDotFull from 'assets/ornaments/icon-dot-full.png';
+import iconDotEmpty from 'assets/ornaments/icon-dot-empty.png';
+
 //indicator that this is a column description row (first row)
 const ID_COLUMN_IDENTIFIER = 'id';
 
@@ -22,8 +25,8 @@ const createOHEntry = (rawEntry: string[]) => {
 
 function OfficeHoursSheet(): JSX.Element {
     const [officeHours, setOfficeHours] = useState<any>([]);
-    const officeAvailableDot = <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-full.png" />;
-    const officeUnavailableDot = <img alt="Dot" className="dot-icon" src="assets/ornaments/icon-dot-empty.png" />;
+    const officeAvailableDot = <img alt="Dot" className="dot-icon" src={iconDotFull} />;
+    const officeUnavailableDot = <img alt="Dot" className="dot-icon" src={iconDotEmpty} />;
     const availabilityConditionString = '-';
 
     useEffect(() => {
