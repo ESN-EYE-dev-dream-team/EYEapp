@@ -1,5 +1,7 @@
 import React from 'react';
 
+import iconBack from 'assets/ornaments/icon-back-white.png';
+
 import './ModalHeader.scss';
 
 export default function ModalHeader({ onClickHandler }: { onClickHandler: Function }): JSX.Element {
@@ -8,7 +10,7 @@ export default function ModalHeader({ onClickHandler }: { onClickHandler: Functi
             <img
                 alt="Icon back"
                 className="icon-back"
-                src="assets/ornaments/icon-back-white.png"
+                src={iconBack}
                 onClick={() => onClickHandler()}
             />
         </div>
