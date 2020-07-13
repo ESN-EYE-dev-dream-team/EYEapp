@@ -28,7 +28,7 @@ export default function EventDetailPage({ data, onDismiss }: { data: any; onDism
 
     return (
         <div className="event-details-container fluid-container-event-details">
-            <ModalHeader  onClickHandler={onDismiss} />
+            <ModalHeader onClickHandler={onDismiss} />
             <h2 className="event-title">{name}</h2>
             <img className="event-details-photo" src={cover.source} alt="Event cover photo" />
 

@@ -3,6 +3,16 @@ import { apiGoogleSheetsClient } from '../../apiClient';
 import { IonItem, IonItemGroup, IonLabel, IonList, IonModal } from '@ionic/react';
 import ModalHeader from 'utils/modalHeader/ModalHeader';
 
+//TODO: create index.ts inside of assets folder to create one, uniform place for all assets/componetns
+import iconPhoto from 'assets/ornaments/icon-photo-background.png';
+import iconPhone from 'assets/ornaments/icon-phone.png';
+import iconFacebook from 'assets/ornaments/icon-facebook.png';
+import iconEmail from 'assets/ornaments/icon-email.png';
+import iconOrnamentVeryShort from 'assets/ornaments/icon-ornament-very-short.png';
+
+import iconHamburgerButton from 'assets/button.png';
+
+//TODO: change it to enum
 const MEMBER_BOARD = 'B';
 const MEMBER_COORDINATOR = 'C';
 const MEMBER_ORDINARY = 'Z';
@@ -42,27 +52,22 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
             <div className="member-container">
                 <ModalHeader onClickHandler={onDismiss} />
                 <div className="photo-and-background">
-                    <img
-                        alt="Background ornament"
-                        className="ESNmember-photo-background"
-                        src="assets/ornaments/icon-photo-background.png"
-                    />
+                    <img alt="Background ornament" className="ESNmember-photo-background" src={iconPhoto} />
                     <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
                 </div>
                 <h1 className="member-data member-name">
                     {data.name} {data.surname}
                 </h1>
                 <p className="member-data member-position">{data.position}</p>
-                <img alt="Phone icon" className="ESNmember-icon-contact" src="assets/ornaments/icon-phone.png" />
+                <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
                 <p className="member-data member-contact">{data.phone}</p>
-                <img alt="Facebook icon" className="ESNmember-icon-contact" src="assets/ornaments/icon-facebook.png" />
+                <img alt="Facebook icon" className="ESNmember-icon-contact" src={iconFacebook} />
                 <p className="member-data member-contact">{data.facebook}</p>
-                <img alt="Email icon" className="ESNmember-icon-contact" src="assets/ornaments/icon-email.png" />
+                <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
                 <p className="member-data member-contact">{data.email}</p>
             </div>
             <div className="ornament-box">
-                {' '}
-                <img className="box-waves-bottom" alt="Ornament waves" src="assets/ornaments/icon-ornament-very-short.png" />
+                <img className="box-waves-bottom" alt="Ornament waves" src={iconOrnamentVeryShort} />
             </div>
         </>
     );
@@ -148,7 +153,6 @@ function EsnersSheet(): JSX.Element {
                 data: { values },
             } = respose;
 
-
             const newEsners = values
                 .filter((rawEntry: string[]) => rawEntry[0] !== ID_COLUMN_IDENTIFIER)
                 .reduce((newEsners: ESNer[], rawEntry: string[]) => {
@@ -180,21 +184,36 @@ function EsnersSheet(): JSX.Element {
             <IonList className="background-white-opacity">
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img onClick={toggleHiddenBoard} className="hamburger-menu" src="assets/button.png" alt="Menu icon" /> <span className="members-label">Board</span>
+                        <img
+                            onClick={toggleHiddenBoard}
+                            className="hamburger-menu"
+                            src={iconHamburgerButton}
+                            alt="Menu icon"
+                        />{' '}
+                        <span className="members-label">Board</span>
                     </IonLabel>
                     {!isHiddenBoard && boardMembers}
                 </IonItemGroup>
 
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img onClick={toggleHiddenCoordinators} className="hamburger-menu" src="assets/button.png" alt="Menu icon" />
+                        <img
+                            onClick={toggleHiddenCoordinators}
+                            className="hamburger-menu"
+                            src={iconHamburgerButton}
+                            alt="Menu icon"
+                        />
                         <span className="members-label">Coordinators</span>
                     </IonLabel>
                     {!isHiddenCoordinators && coordinators}
                 </IonItemGroup>
                 <IonItemGroup className="div-box-members">
                     <IonLabel className="background-white ion-text-center box-members" color="blackNormal">
-                        <img onClick={toggleHiddenOrdinary} className="hamburger-menu" src="assets/button.png" alt="Menu icon"
+                        <img
+                            onClick={toggleHiddenOrdinary}
+                            className="hamburger-menu"
+                            src={iconHamburgerButton}
+                            alt="Menu icon"
                         />
                         <span className="members-label">Ordinary Members</span>
                     </IonLabel>
