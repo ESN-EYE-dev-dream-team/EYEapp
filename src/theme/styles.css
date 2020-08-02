@@ -77,6 +77,10 @@ h1 {
     padding: 10px 40px;
 }
 
+.ESNmember-position{
+    font-size: 13px;
+}
+
 .hamburger-menu {
     color: #1d2d44;
     position: absolute;
@@ -142,6 +146,11 @@ h1 {
 .member-contact {
     font-size: 0.8rem;
     margin: 5px auto 15px;
+}
+
+.member-contact a{
+    color:#eaeff5;
+    text-decoration: none;
 }
 
 .ESNmember-icon-contact {

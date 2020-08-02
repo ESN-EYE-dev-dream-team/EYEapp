@@ -60,9 +60,13 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
                 </h1>
                 <p className="member-data member-position">{data.position}</p>
                 <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
-                <p className="member-data member-contact">{data.phone}</p>
+                <p className="member-data member-contact">
+                    <a href={'https://api.whatsapp.com/send?phone=' + data.phone}>{data.phone}</a>
+                </p>
                 <img alt="Facebook icon" className="ESNmember-icon-contact" src={iconFacebook} />
-                <p className="member-data member-contact">{data.facebook}</p>
+                <p className="member-data member-contact">
+                    <a href={data.facebook}>{data.facebook}</a>
+                </p>
                 <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
                 <p className="member-data member-contact">{data.email}</p>
             </div>
@@ -88,7 +92,7 @@ function Member({ data, openModal }: { data: ESNer; openModal: (data: ESNer) => 
                 <strong>
                     {data.name} {data.surname}
                 </strong>
-                <br /> {data.position}
+                <br /> <span className="ESNmember-position">{data.position}</span>
             </p>
         </IonItem>
     );
