@@ -49,29 +49,31 @@ const createEsner = (rawEntry: string[]) => {
 function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }): JSX.Element {
     return (
         <>
-            <div className="member-container">
-                <ModalHeader onClickHandler={onDismiss} />
-                <div className="photo-and-background">
-                    <img alt="Background ornament" className="ESNmember-photo-background" src={iconPhoto} />
-                    <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
+            <div className="member-wrapper">
+                <div className="member-container">
+                    <ModalHeader onClickHandler={onDismiss} />
+                    <div className="photo-and-background">
+                        <img alt="Background ornament" className="ESNmember-photo-background" src={iconPhoto} />
+                        <img alt="ESN Member" className="ESNmember-photo" src={data.picture} />
+                    </div>
+                    <h1 className="member-data member-name">
+                        {data.name} {data.surname}
+                    </h1>
+                    <p className="member-data member-position">{data.position}</p>
+                    <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
+                    <p className="member-data member-contact">
+                        <a href={'https://api.whatsapp.com/send?phone=' + data.phone}>{data.phone}</a>
+                    </p>
+                    <img alt="Facebook icon" className="ESNmember-icon-contact" src={iconFacebook} />
+                    <p className="member-data member-contact">
+                        <a href={data.facebook}>{data.facebook}</a>
+                    </p>
+                    <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
+                    <p className="member-data member-contact">{data.email}</p>
                 </div>
-                <h1 className="member-data member-name">
-                    {data.name} {data.surname}
-                </h1>
-                <p className="member-data member-position">{data.position}</p>
-                <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
-                <p className="member-data member-contact">
-                    <a href={'https://api.whatsapp.com/send?phone=' + data.phone}>{data.phone}</a>
-                </p>
-                <img alt="Facebook icon" className="ESNmember-icon-contact" src={iconFacebook} />
-                <p className="member-data member-contact">
-                    <a href={data.facebook}>{data.facebook}</a>
-                </p>
-                <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
-                <p className="member-data member-contact">{data.email}</p>
-            </div>
-            <div className="ornament-box">
-                <img className="box-waves-bottom" alt="Ornament waves" src={iconOrnamentVeryShort} />
+                <div className="ornament-box">
+                    <img className="box-waves-bottom" alt="Ornament waves" src={iconOrnamentVeryShort} />
+                </div>
             </div>
         </>
     );

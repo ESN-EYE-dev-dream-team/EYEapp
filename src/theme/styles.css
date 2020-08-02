@@ -236,8 +236,10 @@ ion-item.event-item-box{
     --padding-start:8px
 }
 
-
-
 .small-padding-event{
   margin:0;
+}
+
+.member-wrapper{
+    overflow:scroll;
 }
