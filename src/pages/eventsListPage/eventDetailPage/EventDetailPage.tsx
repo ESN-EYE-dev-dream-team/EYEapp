@@ -42,7 +42,7 @@ export default function EventDetailPage({ data, onDismiss }: { data: any; onDism
             </p>
             <p className="ion-text-justify">
                 <IonIcon className="icon-event-description" icon={pin} /> <strong>Place: </strong>
-                {place.name}
+                <a href={'http://maps.google.com/?q=' + place.name}>{place.name}</a>
             </p>
             <p className="ion-text-justify">{formattedDesciption}</p>
         </div>
