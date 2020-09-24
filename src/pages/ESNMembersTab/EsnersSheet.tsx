@@ -69,7 +69,9 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
                         <a href={data.facebook}>{data.facebook}</a>
                     </p>
                     <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
-                    <p className="member-data member-contact">{data.email}</p>
+                    <p className="member-data member-contact">
+                        <a href={'mailto:' + data.email}>{data.email}</a>
+                    </p>
                 </div>
                 <div className="ornament-box">
                     <img className="box-waves-bottom" alt="Ornament waves" src={iconOrnamentVeryShort} />
