@@ -179,6 +179,12 @@ a, a:visited, a:hover, a:active{
     font-size: 1rem;
     margin: 3% 5%;
 }
+
+.officeHours-week {
+    margin-top:18px;
+    margin-bottom:18px;
+}
+
 .hour-right{
 position: absolute;
 right: 10%;
