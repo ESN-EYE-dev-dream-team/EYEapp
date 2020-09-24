@@ -4,6 +4,10 @@ h1 {
     color: yellow;
 }
 
+a, a:visited, a:hover, a:active{
+    color:#eaeff5;
+}
+
 .fluid-container {
     margin: 7%;
 }
