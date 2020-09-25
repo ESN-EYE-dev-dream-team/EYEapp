@@ -46,7 +46,46 @@ const createEsner = (rawEntry: string[]) => {
     };
 };
 
+function MemberPhone({ data }: { data: ESNer }): JSX.Element {
+    return (
+        <>
+            <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
+            <p className="member-data member-contact">
+                <a href={'https://api.whatsapp.com/send?phone=' + data.phone}>{data.phone}</a>
+            </p>
+        </>
+    );
+}
+
+function MemberFacebook({ data }: { data: ESNer }): JSX.Element {
+    return (
+        <>
+            <img alt="Facebook icon" className="ESNmember-icon-contact" src={iconFacebook} />
+            <p className="member-data member-contact">
+                <a href={data.facebook}>{data.facebook}</a>
+            </p>
+        </>
+    );
+}
+
+function MemberEmail({ data }: { data: ESNer }): JSX.Element {
+    return (
+        <>
+            <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
+            <p className="member-data member-contact">
+                <a href={'mailto:' + data.email}>{data.email}</a>
+            </p>
+        </>
+    );
+}
+
 function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }): JSX.Element {
+    let hasPhone = false,
+        hasFacebook = false,
+        hasEmail = false;
+    if (data.phone !== '' && data.phone !== undefined) hasPhone = true;
+    if (data.facebook !== '' && data.facebook !== undefined) hasFacebook = true;
+    if (data.email !== '' && data.email !== undefined) hasEmail = true;
     return (
         <>
             <div className="member-wrapper">
@@ -60,18 +99,9 @@ function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void
                         {data.name} {data.surname}
                     </h1>
                     <p className="member-data member-position">{data.position}</p>
-                    <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
-                    <p className="member-data member-contact">
-                        <a href={'https://api.whatsapp.com/send?phone=' + data.phone}>{data.phone}</a>
-                    </p>
-                    <img alt="Facebook icon" className="ESNmember-icon-contact" src={iconFacebook} />
-                    <p className="member-data member-contact">
-                        <a href={data.facebook}>{data.facebook}</a>
-                    </p>
-                    <img alt="Email icon" className="ESNmember-icon-contact" src={iconEmail} />
-                    <p className="member-data member-contact">
-                        <a href={'mailto:' + data.email}>{data.email}</a>
-                    </p>
+                    {hasPhone && <MemberPhone data={data} />}
+                    {hasFacebook && <MemberFacebook data={data} />}
+                    {hasEmail && <MemberEmail data={data} />}
                 </div>
                 <div className="ornament-box">
                     <img className="box-waves-bottom" alt="Ornament waves" src={iconOrnamentVeryShort} />
@@ -231,4 +261,5 @@ function EsnersSheet(): JSX.Element {
         </>
     );
 }
+
 export default EsnersSheet;
