@@ -15,12 +15,32 @@ const createParsedDate = (dateString: any): string => {
 export default function EventDetailPage({ data, onDismiss }: { data: any; onDismiss: any }): JSX.Element {
     const { description, cover, start_time, end_time, name, place = { name: '-' } } = data;
     const formattedDesciption = description.split('\n').map((item: any, key: any) => {
-        return (
-            <span key={key}>
-                {item}
-                <br />
-            </span>
-        );
+        if (item.includes('http')) {
+            const regex = new RegExp('.(?=http)');
+            const splittedItems = item.split(regex);
+            if (splittedItems.length > 1) {
+                return (
+                    <span key={key}>
+                        {splittedItems[0]}
+                        <a href={splittedItems[1]}> {splittedItems[1]}</a>
+                        <br />
+                    </span>
+                );
+            } else {
+                return (
+                    <span key={key}>
+                        <a href={splittedItems[0]}> {splittedItems[0]}</a>
+                        <br />
+                    </span>
+                );
+            }
+        } else
+            return (
+                <span key={key}>
+                    {item}
+                    <br />
+                </span>
+            );
     });
 
     const startTimeArray = createParsedDate(start_time).split(',');
