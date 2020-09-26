@@ -42,7 +42,7 @@ const App: React.FC = () => {
 
     return (
         <IonApp>
-            <IonReactHashRouter basename="/EYEapp">
+            <IonReactHashRouter basename="/">
                 <IonTabs>
                     <IonRouterOutlet>
                         <Route path="/eventdetail/:id" component={EventDetailPage} exact={true} />
