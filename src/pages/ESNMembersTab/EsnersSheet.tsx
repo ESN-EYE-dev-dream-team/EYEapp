@@ -47,11 +47,12 @@ const createEsner = (rawEntry: string[]) => {
 };
 
 function MemberPhone({ data }: { data: ESNer }): JSX.Element {
+    const whatsappApi = 'https://api.whatsapp.com/send?phone=';
     return (
         <>
             <img alt="Phone icon" className="ESNmember-icon-contact" src={iconPhone} />
             <p className="member-data member-contact">
-                <a href={'https://api.whatsapp.com/send?phone=' + data.phone}>{data.phone}</a>
+                <a href={`${whatsappApi}${data.phone}`}>{data.phone}</a>
             </p>
         </>
     );
@@ -80,12 +81,10 @@ function MemberEmail({ data }: { data: ESNer }): JSX.Element {
 }
 
 function MemberDetails({ data, onDismiss }: { data: ESNer; onDismiss: () => void }): JSX.Element {
-    let hasPhone = false,
-        hasFacebook = false,
-        hasEmail = false;
-    if (data.phone !== '' && data.phone !== undefined) hasPhone = true;
-    if (data.facebook !== '' && data.facebook !== undefined) hasFacebook = true;
-    if (data.email !== '' && data.email !== undefined) hasEmail = true;
+    const hasPhone = data.phone;
+    const hasFacebook = data.facebook;
+    const hasEmail = data.email;
+
     return (
         <>
             <div className="member-wrapper">

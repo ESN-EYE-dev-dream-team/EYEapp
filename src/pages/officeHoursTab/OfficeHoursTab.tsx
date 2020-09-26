@@ -5,6 +5,8 @@ import '../../theme/styles.css';
 
 import iconOrnamentVeryShort from 'assets/ornaments/icon-ornament-very-short.png';
 
+const ifeGoogleMapsUrl = 'https://g.page/IFE-CKM?share';
+
 const OfficeHoursTab: React.FC = () => {
     return (
         <IonPage>
@@ -29,9 +31,9 @@ const OfficeHoursTab: React.FC = () => {
                         <IonCol size="12">
                             <p className="ion-text-justify color-text-white paragraph-white">
                                 Our office is located at the{' '}
-                                <a href="https://g.page/IFE-CKM?share">International Faculty of Engineering</a> at Lodz
-                                University of Technology. You can find us at the first floor, next to AULA. The room
-                                room number is 52.
+                                <a href={ifeGoogleMapsUrl}>International Faculty of Engineering</a> at Lodz University
+                                of Technology. You can find us at the first floor, next to AULA. The room room number is
+                                52.
                             </p>
                         </IonCol>
                     </IonRow>
