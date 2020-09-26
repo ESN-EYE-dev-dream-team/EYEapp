@@ -20,7 +20,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         'no-console': 'error',
         'no-debugger': 'error',
-        'no-unused-vars': 'error',
+        // 'no-unused-vars': 'error',
     },
     settings: {
         react: {
