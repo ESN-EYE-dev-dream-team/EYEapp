@@ -122,12 +122,12 @@ function EventList(): JSX.Element {
         setShowModal(true);
     };
 
-    const todayEvents = eventList.filter(({ start_time }: Event) => {
-        return moment(start_time).format('L') === moment().format('L');
-    });
-    const futureEvents = eventList.filter(({ start_time }: Event) => {
-        return moment(start_time).format('L') > moment().format('L');
-    });
+    // const todayEvents = eventList.filter(({ start_time }: Event) => {
+    //     return moment(start_time).format('L') === moment().format('L');
+    // });
+    // const futureEvents = eventList.filter(({ start_time }: Event) => {
+    //     return moment(start_time).format('L') > moment().format('L');
+    // });
 
     const EventItem = ({ eventData }: any): JSX.Element => (
         <IonItem className="event-list-item event-item-box" onClick={() => openModal(eventData)}>
@@ -150,7 +150,7 @@ function EventList(): JSX.Element {
             getAllEvents().then(({ data }) => {
                 if (data) setEventList(data);
             });
-    }, []);
+    }, [mockData]);
 
     if (!eventList || eventList === []) return <IonText> No events </IonText>;
 

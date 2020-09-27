@@ -15,7 +15,7 @@ const createParsedDate = (dateString: any): string => {
 };
 
 const parseTextToTextWithLinks = (text: string) => {
-    return (text || '').replace(/([^\S]|^)(((https?:\/\/)|(www\.))(\S+))/gi, function(match, space, url) {
+    return (text || '').replace(/([^\S]|^)(((https?:\/\/)|(www\.))(\S+))/gi, function (match, space, url) {
         let hyperlink = url;
         if (!hyperlink.match('^https?://')) {
             hyperlink = 'http://' + hyperlink;
@@ -35,7 +35,7 @@ export default function EventDetailPage({ data, onDismiss }: { data: any; onDism
         <div className="event-details-container fluid-container-event-details">
             <ModalHeader onClickHandler={onDismiss} />
             <h2 className="event-title">{name}</h2>
-            <img className="event-details-photo" src={cover.source} alt="Event cover photo" />
+            <img className="event-details-photo" src={cover.source} alt="Event cover" />
 
             <p className="ion-text-justify">
                 <IonIcon className="icon-event-description" icon={calendar} /> <strong>Date: </strong>
