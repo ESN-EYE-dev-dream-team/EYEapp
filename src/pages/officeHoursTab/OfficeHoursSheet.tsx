@@ -11,7 +11,6 @@ interface OfficeHoursEntry {
     id: number;
     day: string;
     hour: string;
-    week: string;
 }
 
 const createOHEntry = (rawEntry: string[]) => {
@@ -19,7 +18,6 @@ const createOHEntry = (rawEntry: string[]) => {
         id: parseInt(rawEntry[0]),
         day: rawEntry[1],
         hour: rawEntry[2],
-        week: rawEntry[3],
     };
 };
 
@@ -53,7 +51,6 @@ function OfficeHoursSheet(): JSX.Element {
         <div>
             {officeHours.map((data: any) => (
                 <span key={data.id}>
-                    <h2 className="ion-text-center officeHours-week">{data.week}</h2>
                     <p className="officeHours-days">
                         {data.hour.includes(availabilityConditionString) ? officeAvailableDot : officeUnavailableDot}
                         {data.day} <span className="hour-right">{data.hour}</span>
