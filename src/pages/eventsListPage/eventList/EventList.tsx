@@ -17,7 +17,7 @@ const mockEvents = [
             offset_x: 50,
             offset_y: 50,
             source:
-                'https://scontent.flcj1-1.fna.fbcdn.net/v/t1.0-9/95025791_2875932712443582_6125784864986759168_o.jpg?_nc_cat=101&_nc_sid=340051&_nc_ohc=A4QQ93KjWvMAX9NIUlF&_nc_ht=scontent.flcj1-1.fna&oh=591cc0915199a61f856de3dca7aa848c&oe=5F41C09B',
+                'https://scontent.flcj1-1.fna.fbcdn.net/v/t1.0-9/95025791_2875932712443582_6125784864986759168_o.jpg?_nc_cat=101&_nc_sid=340051&_nc_ohc=-lm9LXGl6pgAX9oHX38&_nc_ht=scontent.flcj1-1.fna&oh=3c81e70cc189166988c730737066a2c5&oe=5F98C39B',
             id: '10157197298652045',
         },
         start_time: moment().toString(),
@@ -48,7 +48,7 @@ const mockEvents = [
             offset_x: 50,
             offset_y: 50,
             source:
-                'https://scontent.flcj1-1.fna.fbcdn.net/v/t1.0-9/90937780_10157029698577045_8740215106845016064_o.jpg?_nc_cat=109&_nc_sid=340051&_nc_ohc=maZRQhuZKhwAX9lkKIs&_nc_ht=scontent.flcj1-1.fna&oh=8693abff5e0da37554d6fe7b03c94d1d&oe=5F44F99E',
+                'https://scontent.flcj1-1.fna.fbcdn.net/v/t1.0-9/90937780_10157029698577045_8740215106845016064_o.jpg?_nc_cat=109&_nc_sid=340051&_nc_ohc=YzrmDSpDVCgAX92Ixsd&_nc_ht=scontent.flcj1-1.fna&oh=7f292fa329fb985c78bc6b4e88b03763&oe=5F98081E',
             id: '10157174563917045',
         },
         start_time: moment()
@@ -142,6 +142,26 @@ function EventList(): JSX.Element {
         </IonItem>
     );
 
+    const noEventsHeading = <p className="ion-text-center">No upcoming events :(</p>;
+
+    const todayEventsItemGroup = (
+        <IonItemGroup>
+            <h2 className="event-group-label ion-text-center">Today</h2>
+            {eventList.map(event => (
+                <EventItem key={event.id} eventData={event} />
+            ))}
+        </IonItemGroup>
+    );
+
+    const comingSoonEventsItemGroup = (
+        <IonItemGroup>
+            <h2 className="event-group-label ion-text-center">Coming soon</h2>
+            {eventList.length > 0
+                ? eventList.map(event => <EventItem key={event.id} eventData={event} />)
+                : noEventsHeading}
+        </IonItemGroup>
+    );
+
     const mockData = false;
 
     useEffect(() => {
@@ -160,18 +180,8 @@ function EventList(): JSX.Element {
                 <EventDetailPage data={eventDetailsData} onDismiss={closeModal} />
             </IonModal>
             <IonList lines="none">
-                <IonItemGroup>
-                    <h2 className="event-group-label ion-text-center">Today</h2>
-                    {mockEvents.map(event => (
-                        <EventItem key={event.id} eventData={event} />
-                    ))}
-                </IonItemGroup>
-                <IonItemGroup>
-                    <h2 className="event-group-label ion-text-center">Coming soon</h2>
-                    {mockEvents.map(event => (
-                        <EventItem key={event.id} eventData={event} />
-                    ))}
-                </IonItemGroup>
+                {eventList.length > 0 && todayEventsItemGroup}
+                {comingSoonEventsItemGroup}
             </IonList>
         </>
     );
