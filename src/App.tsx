@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactHashRouter } from '@ionic/react-router';
 import EventsListPage from './pages/eventsListPage/EventsListPage';
 import OfficeHoursTab from './pages/officeHoursTab/OfficeHoursTab';
 import ESNMembersTab from './pages/ESNMembersTab/ESNMembersTab';
@@ -42,7 +42,7 @@ const App: React.FC = () => {
 
     return (
         <IonApp>
-            <IonReactRouter basename="/EYEapp">
+            <IonReactHashRouter basename="/">
                 <IonTabs>
                     <IonRouterOutlet>
                         <Route path="/eventdetail/:id" component={EventDetailPage} exact={true} />
@@ -80,7 +80,7 @@ const App: React.FC = () => {
                         </IonTabButton>
                     </IonTabBar>
                 </IonTabs>
-            </IonReactRouter>
+            </IonReactHashRouter>
         </IonApp>
     );
 };
