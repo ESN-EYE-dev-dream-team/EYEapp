@@ -142,6 +142,26 @@ function EventList(): JSX.Element {
         </IonItem>
     );
 
+    const noEventsHeading = <p className="ion-text-center">No upcoming events :(</p>;
+
+    const todayEventsItemGroup = (
+        <IonItemGroup>
+            <h2 className="event-group-label ion-text-center">Today</h2>
+            {eventList.map(event => (
+                <EventItem key={event.id} eventData={event} />
+            ))}
+        </IonItemGroup>
+    );
+
+    const comingSoonEventsItemGroup = (
+        <IonItemGroup>
+            <h2 className="event-group-label ion-text-center">Coming soon</h2>
+            {eventList.length > 0
+                ? eventList.map(event => <EventItem key={event.id} eventData={event} />)
+                : noEventsHeading}
+        </IonItemGroup>
+    );
+
     const mockData = false;
 
     useEffect(() => {
@@ -160,18 +180,8 @@ function EventList(): JSX.Element {
                 <EventDetailPage data={eventDetailsData} onDismiss={closeModal} />
             </IonModal>
             <IonList lines="none">
-                <IonItemGroup>
-                    <h2 className="event-group-label ion-text-center">Today</h2>
-                    {mockEvents.map(event => (
-                        <EventItem key={event.id} eventData={event} />
-                    ))}
-                </IonItemGroup>
-                <IonItemGroup>
-                    <h2 className="event-group-label ion-text-center">Coming soon</h2>
-                    {mockEvents.map(event => (
-                        <EventItem key={event.id} eventData={event} />
-                    ))}
-                </IonItemGroup>
+                {eventList.length > 0 && todayEventsItemGroup}
+                {comingSoonEventsItemGroup}
             </IonList>
         </>
     );
