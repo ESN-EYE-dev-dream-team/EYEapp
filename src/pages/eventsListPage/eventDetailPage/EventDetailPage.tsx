@@ -15,7 +15,7 @@ const createParsedDate = (dateString: any): string => {
 };
 
 const parseTextToTextWithLinks = (text: string) => {
-    return (text || '').replace(/([^\S]|^)(((https?:\/\/)|(www\.))(\S+))/gi, function (match, space, url) {
+    return (text || '').replace(/([^\S]|^)(((https?:\/\/)|(www\.))(\S+))/gi, function(match, space, url) {
         let hyperlink = url;
         if (!hyperlink.match('^https?://')) {
             hyperlink = 'http://' + hyperlink;
@@ -26,7 +26,9 @@ const parseTextToTextWithLinks = (text: string) => {
 
 export default function EventDetailPage({ data, onDismiss }: { data: any; onDismiss: any }): JSX.Element {
     const { description, cover, start_time, end_time, name, place = { name: '-' } } = data;
-    const formattedDesciption = parseTextToTextWithLinks(description);
+    const descriptionWithLinks = parseTextToTextWithLinks(description);
+    const newlineRegex = new RegExp('\n', 'g');
+    const formattedDescription = descriptionWithLinks.replace(newlineRegex, '<br/>');
 
     const startTimeArray = createParsedDate(start_time).split(',');
     const endTimeArray = createParsedDate(end_time).split(',');
@@ -45,11 +47,12 @@ export default function EventDetailPage({ data, onDismiss }: { data: any; onDism
                 <IonIcon className="icon-event-description" icon={time} /> <strong>Hour: </strong>
                 {startTimeArray[startTimeArray.length - 1] + ' - ' + endTimeArray[endTimeArray.length - 1]}
             </p>
-            <p className="ion-text-justify">
+            <p className="ion-text-justify event-place">
                 <IonIcon className="icon-event-description" icon={pin} /> <strong>Place: </strong>
                 <a href={`${googleApi}${place.name}`}>{place.name}</a>
             </p>
-            <p className="ion-text-justify" dangerouslySetInnerHTML={{ __html: formattedDesciption }} />
+            <hr className="event-horizontal-rule" />
+            <p className="ion-text-justify" dangerouslySetInnerHTML={{ __html: formattedDescription }} />
         </div>
     );
 }
