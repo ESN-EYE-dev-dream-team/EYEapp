@@ -11,6 +11,7 @@ const createParsedDate = (dateString: any): string => {
     return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
 };
 
+
 const mockEvents = [
     {
         cover: {
@@ -122,12 +123,13 @@ function EventList(): JSX.Element {
         setShowModal(true);
     };
 
-    // const todayEvents = eventList.filter(({ start_time }: Event) => {
-    //     return moment(start_time).format('L') === moment().format('L');
-    // });
-    // const futureEvents = eventList.filter(({ start_time }: Event) => {
-    //     return moment(start_time).format('L') > moment().format('L');
-    // });
+    const todayEvents = eventList.filter(({ start_time }: Event) => {
+        return moment(start_time).format('L') === moment().format('L');
+    });
+    const futureEvents = eventList.filter(({ start_time }: Event) => {
+        return moment(start_time).format('L') > moment().format('L');
+    });
+    futureEvents.sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
 
     const EventItem = ({ eventData }: any): JSX.Element => (
         <IonItem className="event-list-item event-item-box" onClick={() => openModal(eventData)}>
@@ -147,7 +149,7 @@ function EventList(): JSX.Element {
     const todayEventsItemGroup = (
         <IonItemGroup>
             <h2 className="event-group-label ion-text-center">Today</h2>
-            {eventList.map(event => (
+            {todayEvents.map(event => (
                 <EventItem key={event.id} eventData={event} />
             ))}
         </IonItemGroup>
@@ -156,8 +158,8 @@ function EventList(): JSX.Element {
     const comingSoonEventsItemGroup = (
         <IonItemGroup>
             <h2 className="event-group-label ion-text-center">Coming soon</h2>
-            {eventList.length > 0
-                ? eventList.map(event => <EventItem key={event.id} eventData={event} />)
+            {futureEvents.length > 0
+                ? futureEvents.map(event => <EventItem key={event.id} eventData={event} />)
                 : noEventsHeading}
         </IonItemGroup>
     );
@@ -180,7 +182,7 @@ function EventList(): JSX.Element {
                 <EventDetailPage data={eventDetailsData} onDismiss={closeModal} />
             </IonModal>
             <IonList lines="none">
-                {eventList.length > 0 && todayEventsItemGroup}
+                {todayEvents.length > 0 && todayEventsItemGroup}
                 {comingSoonEventsItemGroup}
             </IonList>
         </>
