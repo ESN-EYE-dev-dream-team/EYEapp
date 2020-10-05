@@ -14,7 +14,7 @@
        "purpose": "maskable"
      }
    ],
-   "start_url": "EYEapp/index.html",
+   "start_url": "EYEapp/",
    "display": "standalone",
    "theme_color": "#ffffff",
    "background_color": "#1D2D44"
