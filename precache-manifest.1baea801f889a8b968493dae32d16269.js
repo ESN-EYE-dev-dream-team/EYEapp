@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "710367bd18b03cdf1f4bb92bfdf90fd3",
+    "revision": "cb336a3156b9479a1c31a8bc8d070482",
     "url": "/EYEapp/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EYEapp/static/css/10.51bd2302.chunk.css"
   },
   {
-    "revision": "b63b70d97962c75166d8",
-    "url": "/EYEapp/static/css/main.d64c68fc.chunk.css"
+    "revision": "55f9b635f2014d7f342e",
+    "url": "/EYEapp/static/css/main.931356e0.chunk.css"
   },
   {
     "revision": "4e1f0a1b11b19dbb2690",
@@ -428,12 +428,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EYEapp/static/js/99.25fa91b6.chunk.js.LICENSE"
   },
   {
-    "revision": "b63b70d97962c75166d8",
+    "revision": "55f9b635f2014d7f342e",
     "url": "/EYEapp/static/js/main.bd5c2392.chunk.js"
   },
   {
     "revision": "5a50cc40e7ae44e6c649",
     "url": "/EYEapp/static/js/runtime-main.460282f5.js"
+  },
+  {
+    "revision": "2d36b1a925432bae7f3c53a340868c6e",
+    "url": "/EYEapp/static/media/Lato-Regular.2d36b1a9.ttf"
   },
   {
     "revision": "e8efe561ff653439bc7f507981621d41",
