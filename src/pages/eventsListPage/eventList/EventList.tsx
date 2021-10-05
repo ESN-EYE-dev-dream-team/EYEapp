@@ -11,7 +11,6 @@ const createParsedDate = (dateString: any): string => {
     return parsedDate.format('dddd, MMMM Do YYYY, h:mm a');
 };
 
-
 const mockEvents = [
     {
         cover: {
@@ -97,7 +96,7 @@ interface Event {
         source: string;
     };
     name: string;
-    place: {};
+    place: unknown;
 }
 
 function EventList(): JSX.Element {

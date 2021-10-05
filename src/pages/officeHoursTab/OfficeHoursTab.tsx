@@ -31,8 +31,11 @@ const OfficeHoursTab: React.FC = () => {
                         <IonCol size="12">
                             <p className="ion-text-justify color-text-white paragraph-white">
                                 Our office is located at the{' '}
-                                <a href={ifeGoogleMapsUrl}><strong>International Faculty of Engineering</strong></a> at Lodz University
-                                of Technology. You can find us at the first floor, next to AULA. The room number is <strong>52</strong>.
+                                <a href={ifeGoogleMapsUrl}>
+                                    <strong>International Faculty of Engineering</strong>
+                                </a>{' '}
+                                of Technology. You can find us at the first floor, next to AULA. The room number is
+                                <strong>52</strong>.
                             </p>
                         </IonCol>
                     </IonRow>
